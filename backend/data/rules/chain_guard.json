@@ -1,0 +1,142 @@
+[
+  {
+    "rule_id": "CHG-001",
+    "category": "Chain Guard",
+    "requirement": "Bicycles having a single front sprocket and a single rear sprocket shall have a chain guard that covers the top strand of the chain and at least 90° of the perimeter where the drive chain contacts the drive sprocket. The chain guard shall extend rearward to a point at least 8 cm (3.2 in) forward of the centerline of the rear axle. The minimum width of the top area shall be twice the width of the chain forward of the rear wheel rim; the rear part may be tapered to one-half the chain width.",
+    "requirement_summary": "Single-speed: chain guard covers top chain + 90° sprocket, extends ≥8cm past rear axle, width ≥2× chain",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "§1512.9(a)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": [
+      "Bicycle",
+      "Kids Bicycle",
+      "E-bike"
+    ],
+    "trigger_conditions": [
+      {
+        "field": "product.gear_type",
+        "operator": "eq",
+        "value": "single_speed",
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "bom_component",
+        "description": "BOM must contain chain guard component",
+        "source_path": "product.components"
+      },
+      {
+        "evidence_type": "drawing",
+        "description": "Product drawing showing chain guard coverage area (at least 90° and 8cm extension)",
+        "source_path": "product.drawings"
+      }
+    ],
+    "risk_level": "Major",
+    "consequences": [
+      "Customs Hold",
+      "Amazon Delist"
+    ],
+    "remediation": "Install a chain guard covering the top chain and sprocket engagement area for at least 90° of circumference, extending at least 8cm forward of the rear axle centerline per §1512.9(a).",
+    "related_rules": [
+      "CHG-002",
+      "CHG-003"
+    ]
+  },
+  {
+    "rule_id": "CHG-002",
+    "category": "Chain Guard",
+    "requirement": "The chain guard shall prevent a 9.4mm (3/8in) diameter, 76mm (3in) long test rod from being caught between the chain and sprocket when inserted from the chain side at any angle within a 45° range.",
+    "requirement_summary": "Chain guard must prevent 9.4mm test rod from being caught in chain/sprocket within 45° range",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "§1512.9(a)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": [
+      "Bicycle",
+      "Kids Bicycle",
+      "E-bike"
+    ],
+    "trigger_conditions": [
+      {
+        "field": "product.gear_type",
+        "operator": "eq",
+        "value": "single_speed",
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "test_report",
+        "description": "Chain guard pinch test report per §1512.9(a) using 9.4mm × 76mm test rod",
+        "source_path": "product.tests"
+      },
+      {
+        "evidence_type": "drawing",
+        "description": "Product drawing with clearance dimensions between chain guard and chain/sprocket",
+        "source_path": "product.drawings"
+      }
+    ],
+    "risk_level": "Major",
+    "consequences": [
+      "Customs Hold",
+      "Lawsuit"
+    ],
+    "remediation": "Redesign chain guard to prevent a 9.4mm × 76mm test rod from being caught between chain and sprocket at any angle within 45° per §1512.9(a).",
+    "related_rules": [
+      "CHG-001",
+      "CHG-003"
+    ]
+  },
+  {
+    "rule_id": "CHG-003",
+    "category": "Chain Guard",
+    "requirement": "Derailleurs shall be provided with a guard device to prevent the chain from interfering with or stopping the rotation of the wheel due to improper adjustment or damage.",
+    "requirement_summary": "Derailleur must have guard to prevent chain from blocking wheel rotation",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "§1512.9(b)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": [
+      "Bicycle",
+      "E-bike"
+    ],
+    "trigger_conditions": [
+      {
+        "field": "product.has_derailleur",
+        "operator": "eq",
+        "value": true,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "bom_component",
+        "description": "BOM must contain derailleur guard component",
+        "source_path": "product.components"
+      },
+      {
+        "evidence_type": "product_photo",
+        "description": "Product photo showing derailleur guard installed",
+        "source_path": "product.photos"
+      }
+    ],
+    "risk_level": "Major",
+    "consequences": [
+      "Customs Hold",
+      "Lawsuit"
+    ],
+    "remediation": "Install a derailleur guard that prevents chain from interfering with or stopping wheel rotation per §1512.9(b).",
+    "related_rules": [
+      "CHG-001",
+      "CHG-002"
+    ]
+  }
+]

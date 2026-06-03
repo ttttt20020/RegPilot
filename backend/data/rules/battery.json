@@ -1,0 +1,182 @@
+[
+  {
+    "rule_id": "BAT-001",
+    "category": "Battery",
+    "requirement": "Under a single fault condition of the circuit protection, the battery shall be charged at the manufacturer's maximum allowable charge current to 110% of the maximum voltage limit, and shall not catch fire, explode, emit smoke, or leak electrolyte.",
+    "requirement_summary": "Battery must not fire/explode/smoke/leak when overcharged to 110% max voltage under single fault",
+    "regulation_source": {
+      "regulation": "UL 2271",
+      "section": "Overcharge Test",
+      "effective_date": "2018-04-09"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["E-bike"],
+    "trigger_conditions": [
+      {
+        "field": "product.has_battery",
+        "operator": "eq",
+        "value": true,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "test_report",
+        "description": "UL 2271 overcharge test report showing no fire, explosion, smoke, or leakage under single fault condition",
+        "source_path": "product.tests"
+      },
+      {
+        "evidence_type": "spec_sheet_value",
+        "description": "BMS protection circuit verification documentation",
+        "source_path": "product.bms_protection"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": ["Recall", "CPSC Fine", "Amazon Delist"],
+    "remediation": "Ensure battery passes UL 2271 overcharge test with robust BMS protection that prevents fire, explosion, smoke, or leakage under single fault conditions.",
+    "related_rules": ["BAT-002", "BAT-003", "BAT-004", "BAT-005", "ELS-004"]
+  },
+  {
+    "rule_id": "BAT-002",
+    "category": "Battery",
+    "requirement": "A fully charged battery pack shall be subjected to a short circuit test under single fault conditions (short circuit resistance \u2264 20m\u03a9) and shall not catch fire or explode.",
+    "requirement_summary": "Battery must not fire/explode when short-circuited (\u226420m\u03a9) under single fault",
+    "regulation_source": {
+      "regulation": "UL 2271",
+      "section": "Short Circuit Test",
+      "effective_date": "2018-04-09"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["E-bike"],
+    "trigger_conditions": [
+      {
+        "field": "product.has_battery",
+        "operator": "eq",
+        "value": true,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "test_report",
+        "description": "UL 2271 short circuit test report showing no fire or explosion",
+        "source_path": "product.tests"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": ["Recall", "CPSC Fine", "Amazon Delist"],
+    "remediation": "Ensure battery passes UL 2271 short circuit test with adequate BMS protection to prevent fire or explosion under short circuit conditions.",
+    "related_rules": ["BAT-001", "BAT-003", "BAT-004", "BAT-005"]
+  },
+  {
+    "rule_id": "BAT-003",
+    "category": "Battery",
+    "requirement": "A fully charged battery pack shall be subjected to an overdischarge test under single fault conditions, discharged at the manufacturer's specified maximum discharge current, and the protection circuit must activate before reaching a hazardous state.",
+    "requirement_summary": "BMS must activate before hazardous state during overdischarge under single fault",
+    "regulation_source": {
+      "regulation": "UL 2271",
+      "section": "Overdischarge Test",
+      "effective_date": "2018-04-09"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["E-bike"],
+    "trigger_conditions": [
+      {
+        "field": "product.has_battery",
+        "operator": "eq",
+        "value": true,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "test_report",
+        "description": "UL 2271 overdischarge test report showing BMS activation before hazardous state",
+        "source_path": "product.tests"
+      },
+      {
+        "evidence_type": "spec_sheet_value",
+        "description": "BMS overdischarge protection verification documentation",
+        "source_path": "product.bms_protection"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": ["Recall", "CPSC Fine", "Amazon Delist"],
+    "remediation": "Ensure battery passes UL 2271 overdischarge test with BMS that activates overdischarge protection before reaching a hazardous state.",
+    "related_rules": ["BAT-001", "BAT-002", "BAT-004", "BAT-005", "ELS-004"]
+  },
+  {
+    "rule_id": "BAT-004",
+    "category": "Battery",
+    "requirement": "The battery shall undergo 5 charge/discharge cycles at the maximum upper-limit charging temperature environment, and all components and accessible surface temperatures shall not exceed the limits specified in UL 2271 Table 26.1/26.2.",
+    "requirement_summary": "Battery temperatures must stay within UL 2271 Table 26.1/26.2 limits over 5 cycles at max temp",
+    "regulation_source": {
+      "regulation": "UL 2271",
+      "section": "Temperature Test",
+      "effective_date": "2018-04-09"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["E-bike"],
+    "trigger_conditions": [
+      {
+        "field": "product.has_battery",
+        "operator": "eq",
+        "value": true,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "test_report",
+        "description": "UL 2271 temperature test report with all component and surface temperature records over 5 cycles",
+        "source_path": "product.tests"
+      },
+      {
+        "evidence_type": "spec_sheet_value",
+        "description": "Temperature records for all components and accessible surfaces",
+        "source_path": "product.battery_temperature_records"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": ["Recall", "CPSC Fine", "Amazon Delist"],
+    "remediation": "Ensure battery temperatures remain within UL 2271 Table 26.1/26.2 limits during 5 charge/discharge cycles at maximum ambient temperature.",
+    "related_rules": ["BAT-001", "BAT-002", "BAT-003", "BAT-005"]
+  },
+  {
+    "rule_id": "BAT-005",
+    "category": "Battery",
+    "requirement": "With one cell fully discharged and the remaining cells discharged to 50% capacity, the battery pack shall be charged per manufacturer instructions. The BMS must effectively control the charging state to prevent any cell voltage from exceeding its limit.",
+    "requirement_summary": "BMS must prevent cell overvoltage during imbalanced charging (1 cell empty, rest at 50%)",
+    "regulation_source": {
+      "regulation": "UL 2271",
+      "section": "Imbalanced Charging Test",
+      "effective_date": "2018-04-09"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["E-bike"],
+    "trigger_conditions": [
+      {
+        "field": "product.battery_cell_count",
+        "operator": "gt",
+        "value": 1,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "test_report",
+        "description": "UL 2271 imbalanced charging test report showing BMS cell voltage control",
+        "source_path": "product.tests"
+      },
+      {
+        "evidence_type": "spec_sheet_value",
+        "description": "BMS cell balancing function verification documentation",
+        "source_path": "product.bms_protection"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": ["Recall", "CPSC Fine", "Amazon Delist"],
+    "remediation": "Ensure battery passes UL 2271 imbalanced charging test with BMS that effectively controls cell voltages and prevents any cell from exceeding its voltage limit during imbalanced conditions.",
+    "related_rules": ["BAT-001", "BAT-002", "BAT-003", "BAT-004", "ELS-004"]
+  }
+]

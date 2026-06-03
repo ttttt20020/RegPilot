@@ -1,0 +1,69 @@
+[
+  {
+    "rule_id": "PED-001",
+    "category": "Drivetrain",
+    "requirement": "Pedals shall have tread surfaces on both sides or be designed to self-right. The tread surface shall have anti-slip properties. Pedals shall not have exposed sharp edges.",
+    "requirement_summary": "Pedals must have anti-slip tread on both sides or self-right, no sharp edges",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "\u00a71512.7(a)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["Bicycle", "Kids Bicycle", "E-bike"],
+    "trigger_conditions": [],
+    "evidence_required": [
+      {
+        "evidence_type": "bom_component",
+        "description": "BOM must contain pedal components",
+        "source_path": "product.components"
+      },
+      {
+        "evidence_type": "product_photo",
+        "description": "Product photo showing pedal tread surfaces on both sides or self-righting design",
+        "source_path": "product.photos"
+      }
+    ],
+    "risk_level": "Minor",
+    "consequences": ["Customs Hold"],
+    "remediation": "Replace pedals with dual-tread or self-righting pedals with anti-slip surfaces per \u00a71512.7(a).",
+    "related_rules": ["PED-002"]
+  },
+  {
+    "rule_id": "PED-002",
+    "category": "Drivetrain",
+    "requirement": "Pedal reflectors, when required, shall be essentially colorless or amber on the front and rear surfaces of each pedal, and shall meet the photometric requirements of \u00a71512.16(e).",
+    "requirement_summary": "Pedal reflectors must be colorless or amber, meeting \u00a71512.16(e) photometric requirements",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "\u00a71512.7(c)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["Bicycle", "E-bike"],
+    "trigger_conditions": [
+      {
+        "field": "product.is_sidewalk_bicycle",
+        "operator": "neq",
+        "value": true,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "bom_component",
+        "description": "BOM must show pedal assemblies include reflector devices",
+        "source_path": "product.components"
+      },
+      {
+        "evidence_type": "test_report",
+        "description": "Pedal reflector photometric test report per \u00a71512.16(e)",
+        "source_path": "product.tests"
+      }
+    ],
+    "risk_level": "Minor",
+    "consequences": ["Customs Hold"],
+    "remediation": "Equip each pedal with essentially colorless or amber reflectors meeting \u00a71512.16(e) photometric requirements.",
+    "related_rules": ["PED-001", "REF-003"]
+  }
+]

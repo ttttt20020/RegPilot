@@ -1,0 +1,280 @@
+[
+  {
+    "rule_id": "LBL-001",
+    "category": "Label",
+    "requirement": "Each bicycle frame shall have a permanent marking or label securely attached, identifying the manufacturer or private labeler name and information enabling identification of the month and year of manufacture. The label shall not be removable without being destroyed.",
+    "requirement_summary": "Frame must have permanent label with manufacturer name and production date",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "§1512.19(e)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": [
+      "Bicycle",
+      "Kids Bicycle",
+      "E-bike"
+    ],
+    "trigger_conditions": [],
+    "evidence_required": [
+      {
+        "evidence_type": "label_photo",
+        "description": "Product photo showing permanent frame label with manufacturer name and production date",
+        "source_path": "product.labels"
+      },
+      {
+        "evidence_type": "label_photo",
+        "description": "Label content sample showing all required information",
+        "source_path": "product.labels"
+      }
+    ],
+    "risk_level": "Major",
+    "consequences": [
+      "Customs Hold",
+      "Amazon Delist"
+    ],
+    "remediation": "Attach a permanent, non-removable label to the frame with manufacturer/private labeler name and production month/year per §1512.19(e).",
+    "related_rules": [
+      "LBL-002",
+      "LBL-003",
+      "LBL-004",
+      "TRK-001",
+      "TRK-002"
+    ]
+  },
+  {
+    "rule_id": "LBL-002",
+    "category": "Label",
+    "requirement": "Quill-type handlebar stems shall contain a permanent ring mark or line clearly indicating the minimum insertion depth. The mark shall be located no less than 2.5 times the stem diameter from the lowest point of the stem.",
+    "requirement_summary": "Quill stem must have permanent min-insertion mark ≥2.5× stem diameter from bottom",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "§1512.6(a)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": [
+      "Bicycle",
+      "Kids Bicycle",
+      "E-bike"
+    ],
+    "trigger_conditions": [
+      {
+        "field": "product.stem_type",
+        "operator": "eq",
+        "value": "quill",
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "spec_sheet_value",
+        "description": "Spec sheet or drawing noting handlebar stem minimum insertion depth mark",
+        "source_path": "product.stem_insertion_mark"
+      },
+      {
+        "evidence_type": "product_photo",
+        "description": "Product photo showing insertion depth mark on handlebar stem",
+        "source_path": "product.photos"
+      }
+    ],
+    "risk_level": "Major",
+    "consequences": [
+      "Customs Hold",
+      "Lawsuit"
+    ],
+    "remediation": "Add a permanent ring mark or line on quill-type handlebar stems indicating minimum insertion depth at no less than 2.5× stem diameter from the bottom per §1512.6(a).",
+    "related_rules": [
+      "LBL-001",
+      "LBL-003",
+      "TST-005",
+      "WRN-002"
+    ]
+  },
+  {
+    "rule_id": "LBL-003",
+    "category": "Label",
+    "requirement": "Seat posts shall have a permanent ring or mark which clearly indicates the minimum insertion depth. The insertion mark shall not affect the structural integrity and shall not be less than 2.5 times the seat post diameter from the lowest point of the post. The seat post strength shall be maintained for at least a length of one shaft diameter below the mark.",
+    "requirement_summary": "Seat post must have permanent min-insertion mark ≥2.5× diameter from bottom",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "§1512.15(b)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": [
+      "Bicycle",
+      "Kids Bicycle",
+      "E-bike"
+    ],
+    "trigger_conditions": [],
+    "evidence_required": [
+      {
+        "evidence_type": "spec_sheet_value",
+        "description": "Spec sheet or drawing noting seat post minimum insertion depth mark",
+        "source_path": "product.seat_post_insertion_mark"
+      },
+      {
+        "evidence_type": "product_photo",
+        "description": "Product photo showing insertion depth mark on seat post",
+        "source_path": "product.photos"
+      }
+    ],
+    "risk_level": "Major",
+    "consequences": [
+      "Customs Hold",
+      "Lawsuit"
+    ],
+    "remediation": "Add a permanent mark or ring on the seat post indicating minimum insertion depth at no less than 2× seat post diameter from the bottom per §1512.15(b).",
+    "related_rules": [
+      "LBL-001",
+      "LBL-002"
+    ]
+  },
+  {
+    "rule_id": "LBL-004",
+    "category": "Label",
+    "requirement": "Each bicycle shall be accompanied by instructions for use containing: (1) operation and safety instructions (brake and gear operation, wet weather and night riding precautions); (2) complete and correct assembly instructions; (3) maintenance instructions.",
+    "requirement_summary": "Must include instruction manual with operation, assembly, and maintenance instructions",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "§1512.19(a)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": [
+      "Bicycle",
+      "Kids Bicycle",
+      "E-bike"
+    ],
+    "trigger_conditions": [],
+    "evidence_required": [
+      {
+        "evidence_type": "manual_document",
+        "description": "Instruction manual document containing operation, assembly, and maintenance instructions",
+        "source_path": "product.documentation"
+      },
+      {
+        "evidence_type": "manual_document",
+        "description": "Manual content review confirming all three sections are present and accurate",
+        "source_path": "product.documentation"
+      }
+    ],
+    "risk_level": "Major",
+    "consequences": [
+      "Customs Hold",
+      "Amazon Delist"
+    ],
+    "remediation": "Provide a complete instruction manual with operation/safety instructions, assembly instructions, and maintenance instructions per §1512.19(a).",
+    "related_rules": [
+      "LBL-005",
+      "WRN-002",
+      "WRN-003",
+      "WRN-004"
+    ]
+  },
+  {
+    "rule_id": "LBL-005",
+    "category": "Label",
+    "requirement": "Bicycles not fully assembled and adjusted must have promotional display materials and shipping carton exteriors marked with: (1) a list of tools required for proper assembly and adjustment; (2) a diagram of minimum leg length for riders and measurement method.",
+    "requirement_summary": "Unassembled bikes must show required tools and min leg length on packaging",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "§1512.19(b) & (c)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": [
+      "Bicycle",
+      "Kids Bicycle",
+      "E-bike"
+    ],
+    "trigger_conditions": [
+      {
+        "field": "product.sold_assembled",
+        "operator": "eq",
+        "value": false,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "packaging_photo",
+        "description": "Shipping carton photo showing required tools list and minimum leg length diagram",
+        "source_path": "product.packaging"
+      },
+      {
+        "evidence_type": "packaging_photo",
+        "description": "Promotional display material sample showing required markings",
+        "source_path": "product.packaging"
+      }
+    ],
+    "risk_level": "Minor",
+    "consequences": [
+      "Customs Hold"
+    ],
+    "remediation": "Mark shipping cartons and promotional materials with the required tools list and minimum rider leg length diagram per §1512.19(b) & (c).",
+    "related_rules": [
+      "LBL-004"
+    ]
+  },
+  {
+    "rule_id": "LBL-006",
+    "category": "Label",
+    "requirement": "Sidewalk bicycles with a lowest seat height of less than 560mm (22in) and no brakes must bear a permanent label visible in daylight from 3.1m (10ft), and promotional display materials and shipping cartons must prominently display the words \"No Brakes\".",
+    "requirement_summary": "Brakeless sidewalk bikes (seat <560mm) must have permanent \"No Brakes\" label and packaging marking",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "§1512.5(e)(3)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": [
+      "Kids Bicycle"
+    ],
+    "trigger_conditions": [
+      {
+        "field": "product.is_sidewalk_bicycle",
+        "operator": "eq",
+        "value": true,
+        "logic": "AND"
+      },
+      {
+        "field": "product.seat_height_lowest_mm",
+        "operator": "lt",
+        "value": 560,
+        "logic": "AND"
+      },
+      {
+        "field": "product.brake_type",
+        "operator": "eq",
+        "value": "none",
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "label_photo",
+        "description": "Product photo showing permanent \"No Brakes\" label visible at 3.1m in daylight",
+        "source_path": "product.labels"
+      },
+      {
+        "evidence_type": "packaging_photo",
+        "description": "Shipping carton photo showing prominent \"No Brakes\" marking",
+        "source_path": "product.packaging"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": [
+      "Recall",
+      "CPSC Fine",
+      "Customs Hold"
+    ],
+    "remediation": "Add a permanent \"No Brakes\" label on the bicycle visible at 3.1m in daylight and prominently display \"No Brakes\" on packaging per §1512.5(e)(3).",
+    "related_rules": [
+      "BRK-006",
+      "WRN-001",
+      "REF-005"
+    ]
+  }
+]

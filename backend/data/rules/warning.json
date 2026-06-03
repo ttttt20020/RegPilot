@@ -1,0 +1,120 @@
+[
+  {
+    "rule_id": "WRN-001",
+    "category": "Warning",
+    "requirement": "Sidewalk bicycles with no brakes and a lowest seat height of less than 560mm must have a permanent label on the bicycle visible in daylight from 3.1m (10ft) and display \"No Brakes\" on the packaging.",
+    "requirement_summary": "Brakeless sidewalk bikes (seat <560mm) must have permanent \"No Brakes\" label and packaging marking",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "\u00a71512.5(e)(3)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["Kids Bicycle"],
+    "trigger_conditions": [
+      {
+        "field": "product.is_sidewalk_bicycle",
+        "operator": "eq",
+        "value": true,
+        "logic": "AND"
+      },
+      {
+        "field": "product.brake_type",
+        "operator": "eq",
+        "value": "none",
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "label_photo",
+        "description": "Product photo showing permanent \"No Brakes\" label visible at 3.1m in daylight",
+        "source_path": "product.labels"
+      },
+      {
+        "evidence_type": "packaging_photo",
+        "description": "Packaging photo showing prominent \"No Brakes\" marking",
+        "source_path": "product.packaging"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": ["Recall", "CPSC Fine", "Lawsuit"],
+    "remediation": "Add a permanent \"No Brakes\" label on the bicycle visible at 3.1m in daylight and display \"No Brakes\" on packaging per \u00a71512.5(e)(3).",
+    "related_rules": ["BRK-006", "LBL-006"]
+  },
+  {
+    "rule_id": "WRN-002",
+    "category": "Warning",
+    "requirement": "Assembly instructions must contain an explicit warning about the risk of over-tightening the stem bolt or other clamping devices, which may cause stem-fork assembly damage and rider injury, along with simple, clear, and precise steps to avoid damage.",
+    "requirement_summary": "Manual must warn about over-tightening stem bolt risk with clear avoidance steps",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "\u00a71512.6(e)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["Bicycle", "Kids Bicycle", "E-bike"],
+    "trigger_conditions": [],
+    "evidence_required": [
+      {
+        "evidence_type": "manual_document",
+        "description": "Instruction manual must contain stem bolt over-tightening warning with clear avoidance steps",
+        "source_path": "product.documentation"
+      }
+    ],
+    "risk_level": "Major",
+    "consequences": ["Lawsuit", "Customs Hold"],
+    "remediation": "Add an explicit warning in the assembly instructions about over-tightening stem bolt/clamping device risks, with simple and precise steps to avoid damage per \u00a71512.6(e).",
+    "related_rules": ["LBL-002", "LBL-004", "TST-005"]
+  },
+  {
+    "rule_id": "WRN-003",
+    "category": "Warning",
+    "requirement": "The instruction manual must contain night riding precautions.",
+    "requirement_summary": "Manual must include night riding safety precautions",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "\u00a71512.19(a)(1)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["Bicycle", "Kids Bicycle", "E-bike"],
+    "trigger_conditions": [],
+    "evidence_required": [
+      {
+        "evidence_type": "manual_document",
+        "description": "Instruction manual must contain night riding precautions section",
+        "source_path": "product.documentation"
+      }
+    ],
+    "risk_level": "Minor",
+    "consequences": ["Customs Hold"],
+    "remediation": "Add night riding precautions to the instruction manual per \u00a71512.19(a)(1).",
+    "related_rules": ["LBL-004", "WRN-004", "REF-001", "REF-002"]
+  },
+  {
+    "rule_id": "WRN-004",
+    "category": "Warning",
+    "requirement": "The instruction manual must contain wet weather operation precautions.",
+    "requirement_summary": "Manual must include wet weather operation precautions",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "\u00a71512.19(a)(1)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["Bicycle", "Kids Bicycle", "E-bike"],
+    "trigger_conditions": [],
+    "evidence_required": [
+      {
+        "evidence_type": "manual_document",
+        "description": "Instruction manual must contain wet weather operation precautions section",
+        "source_path": "product.documentation"
+      }
+    ],
+    "risk_level": "Minor",
+    "consequences": ["Customs Hold"],
+    "remediation": "Add wet weather operation precautions to the instruction manual per \u00a71512.19(a)(1).",
+    "related_rules": ["LBL-004", "WRN-003", "BRK-002"]
+  }
+]

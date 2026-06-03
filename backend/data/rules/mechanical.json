@@ -1,0 +1,80 @@
+[
+  {
+    "rule_id": "MEC-001",
+    "category": "Mechanical",
+    "requirement": "Bicycles shall not have exposed sharp edges that could cause laceration injuries during normal use or maintenance. All edges that a user may contact shall be smoothed, rolled, or otherwise treated to eliminate sharpness.",
+    "requirement_summary": "No exposed sharp edges on any user-contactable parts",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "§1512.4(a)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": [
+      "Bicycle",
+      "Kids Bicycle",
+      "E-bike"
+    ],
+    "trigger_conditions": [],
+    "evidence_required": [
+      {
+        "evidence_type": "test_report",
+        "description": "Sharp edge test report per 16 CFR 1500.49 showing no accessible sharp edges",
+        "source_path": "product.tests"
+      },
+      {
+        "evidence_type": "product_photo",
+        "description": "Product photos showing all edges are smoothed or rolled",
+        "source_path": "product.photos"
+      }
+    ],
+    "risk_level": "Major",
+    "consequences": [
+      "Customs Hold",
+      "Lawsuit"
+    ],
+    "remediation": "Smooth, roll, or otherwise treat all exposed edges to eliminate sharpness per §1512.4(a).",
+    "related_rules": [
+      "MEC-002"
+    ]
+  },
+  {
+    "rule_id": "MEC-002",
+    "category": "Mechanical",
+    "requirement": "Bicycles shall not have protruding parts that could cause impalement or snagging injuries. Handlebar ends shall be capped or covered with devices secure against ≥66.8N (15 lbf) removal force. Control cable ends shall be capped or treated to prevent fraying per §1512.4(i). Control cables shall be routed to avoid abrasion per §1512.4(j).",
+    "requirement_summary": "No protrusions; handlebar caps ≥66.8N; cable ends capped; cables no abrasion",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "§1512.4(b)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": [
+      "Bicycle",
+      "Kids Bicycle",
+      "E-bike"
+    ],
+    "trigger_conditions": [],
+    "evidence_required": [
+      {
+        "evidence_type": "bom_component",
+        "description": "BOM must contain handlebar grips or end caps that cover handlebar ends",
+        "source_path": "product.components"
+      },
+      {
+        "evidence_type": "product_photo",
+        "description": "Product photo showing handlebar ends properly capped and cables properly routed",
+        "source_path": "product.photos"
+      }
+    ],
+    "risk_level": "Major",
+    "consequences": [
+      "Customs Hold",
+      "Lawsuit"
+    ],
+    "remediation": "Install handlebar end caps or grips covering all handlebar ends, and ensure cables are properly routed per §1512.4(b).",
+    "related_rules": [
+      "MEC-001"
+    ]
+  }
+]

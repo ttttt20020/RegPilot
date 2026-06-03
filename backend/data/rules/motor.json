@@ -1,0 +1,182 @@
+[
+  {
+    "rule_id": "MOT-001",
+    "category": "Motor",
+    "requirement": "The motor shall not catch fire or create a safety hazard under overload conditions.",
+    "requirement_summary": "Motor must not fire or create hazard under overload conditions",
+    "regulation_source": {
+      "regulation": "UL 2849",
+      "section": "Motor Overload Test",
+      "effective_date": "2020-10-23"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": [
+      "E-bike"
+    ],
+    "trigger_conditions": [
+      {
+        "field": "product.has_motor",
+        "operator": "eq",
+        "value": true,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "test_report",
+        "description": "UL 2849 motor overload test report showing no fire or safety hazard",
+        "source_path": "product.tests"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": [
+      "Recall",
+      "CPSC Fine",
+      "Amazon Delist"
+    ],
+    "remediation": "Ensure motor passes UL 2849 overload test without fire or safety hazard. Verify motor protection circuits are properly designed.",
+    "related_rules": [
+      "MOT-002",
+      "MOT-003",
+      "MOT-004"
+    ]
+  },
+  {
+    "rule_id": "MOT-002",
+    "category": "Motor",
+    "requirement": "The motor shall not catch fire or create a safety hazard under locked rotor conditions.",
+    "requirement_summary": "Motor must not fire or create hazard under locked rotor conditions",
+    "regulation_source": {
+      "regulation": "UL 2849",
+      "section": "Motor Locked Rotor Test",
+      "effective_date": "2020-10-23"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": [
+      "E-bike"
+    ],
+    "trigger_conditions": [
+      {
+        "field": "product.has_motor",
+        "operator": "eq",
+        "value": true,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "test_report",
+        "description": "UL 2849 motor locked rotor test report showing no fire or safety hazard",
+        "source_path": "product.tests"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": [
+      "Recall",
+      "CPSC Fine",
+      "Amazon Delist"
+    ],
+    "remediation": "Ensure motor passes UL 2849 locked rotor test without fire or safety hazard. Verify controller can detect and respond to locked rotor conditions.",
+    "related_rules": [
+      "MOT-001",
+      "MOT-003",
+      "MOT-004"
+    ]
+  },
+  {
+    "rule_id": "MOT-003",
+    "category": "Motor",
+    "requirement": "The motor controller shall have overcurrent protection and overtemperature protection functions that automatically cut off or limit output under abnormal conditions.",
+    "requirement_summary": "Controller must have overcurrent and overtemperature auto-protection",
+    "regulation_source": {
+      "regulation": "UL 2849",
+      "section": "Controller Requirements",
+      "effective_date": "2020-10-23"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": [
+      "E-bike"
+    ],
+    "trigger_conditions": [
+      {
+        "field": "product.has_motor",
+        "operator": "eq",
+        "value": true,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "spec_sheet_value",
+        "description": "Controller specification sheet documenting overcurrent and overtemperature protection functions",
+        "source_path": "product.controller_protection"
+      },
+      {
+        "evidence_type": "test_report",
+        "description": "UL 2849 component fault test report verifying controller protection functions",
+        "source_path": "product.tests"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": [
+      "Recall",
+      "CPSC Fine",
+      "Amazon Delist"
+    ],
+    "remediation": "Implement overcurrent and overtemperature protection in the motor controller that automatically cuts off or limits output under abnormal conditions per UL 2849.",
+    "related_rules": [
+      "MOT-001",
+      "MOT-002",
+      "MOT-004",
+      "ELS-004"
+    ]
+  },
+  {
+    "rule_id": "MOT-004",
+    "category": "Motor",
+    "requirement": "Under 15 USC §2085(2), a “low-speed electric bicycle” shall have fully operable pedals and an electric motor of less than 750W (1 hp), with a maximum speed of ≤20 mph (32 km/h) on a paved level surface when powered solely by the motor. Class 1: pedal-assist only, motor stops at 20mph. Class 2: throttle-assist, motor stops at 20mph. Class 3: pedal-assist only, motor stops at 28mph. All classes must have motor <750W.",
+    "requirement_summary": "E-bike: motor <750W; Class 1/2 ≤20mph, Class 3 ≤28mph; must have operable pedals",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "§1512.2(b)(2)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": [
+      "E-bike"
+    ],
+    "trigger_conditions": [
+      {
+        "field": "product.has_motor",
+        "operator": "eq",
+        "value": true,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "spec_sheet_value",
+        "description": "Motor specification sheet showing rated power (must be <750W)",
+        "source_path": "product.motor_power_w"
+      },
+      {
+        "evidence_type": "test_report",
+        "description": "Maximum speed test report with 170 lb rider on paved level surface under motor power only",
+        "source_path": "product.tests"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": [
+      "Recall",
+      "CPSC Fine",
+      "Import Denial",
+      "Amazon Delist"
+    ],
+    "remediation": "Ensure motor rated power is below 750W and maximum speed under motor-only power does not exceed 20 mph per §1512.2(b)(2).",
+    "related_rules": [
+      "MOT-001",
+      "MOT-002",
+      "MOT-003"
+    ]
+  }
+]

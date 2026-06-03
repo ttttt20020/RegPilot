@@ -1,0 +1,133 @@
+[
+  {
+    "rule_id": "TRK-001",
+    "category": "Tracking Label",
+    "requirement": "Children's products and their packaging shall bear a permanent tracking label that enables consumers to ascertain the manufacturer name, place of production, date of production, batch or run number, and other characteristics useful for ascertaining the source of the product.",
+    "requirement_summary": "Kids products must have permanent tracking label on product and packaging",
+    "regulation_source": {
+      "regulation": "CPSIA",
+      "section": "Section 14(a)(5)",
+      "effective_date": "2011-08-14"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["Kids Bicycle"],
+    "trigger_conditions": [
+      {
+        "field": "product.target_age_group",
+        "operator": "eq",
+        "value": "children",
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "label_photo",
+        "description": "Product photo showing permanent tracking label on the bicycle",
+        "source_path": "product.labels"
+      },
+      {
+        "evidence_type": "packaging_photo",
+        "description": "Packaging photo showing tracking label on packaging",
+        "source_path": "product.packaging"
+      }
+    ],
+    "risk_level": "Major",
+    "consequences": ["Customs Hold", "CPSC Fine", "Import Denial"],
+    "remediation": "Add permanent tracking labels on both the product and its packaging per CPSIA Section 14(a)(5).",
+    "related_rules": ["TRK-002", "LBL-001", "TST-001", "TST-002"]
+  },
+  {
+    "rule_id": "TRK-002",
+    "category": "Tracking Label",
+    "requirement": "The tracking label must contain the following information: (1) manufacturer name; (2) place of production (city/state/country); (3) date of production (month/year); (4) batch number or run number; (5) other characteristics useful for ascertaining the source of the product.",
+    "requirement_summary": "Tracking label must have 5 items: manufacturer, location, date, batch, other source info",
+    "regulation_source": {
+      "regulation": "CPSIA",
+      "section": "Section 14(a)(5)",
+      "effective_date": "2011-08-14"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["Kids Bicycle"],
+    "trigger_conditions": [
+      {
+        "field": "product.target_age_group",
+        "operator": "eq",
+        "value": "children",
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "label_photo",
+        "description": "Tracking label content review confirming all 5 required information items are present",
+        "source_path": "product.labels"
+      }
+    ],
+    "risk_level": "Major",
+    "consequences": ["Customs Hold", "CPSC Fine", "Import Denial"],
+    "remediation": "Ensure tracking labels contain all 5 required items: (1) manufacturer name, (2) production location, (3) production date, (4) batch/run number, (5) other source-identifying characteristics per CPSIA Section 14(a)(5).",
+    "related_rules": ["TRK-001", "LBL-001", "TST-001", "TST-002"]
+  },
+  {
+    "rule_id": "TRK-003",
+    "category": "Certification",
+    "requirement": "The US importer of any non-children's product subject to a consumer product safety rule must issue a General Certificate of Conformity (GCC) certifying that the product complies with all applicable CPSC rules, based on a test of each product or a reasonable testing program. The GCC must accompany the product and be provided to distributors and retailers upon request.",
+    "requirement_summary": "US importer must issue GCC certifying product complies with all applicable CPSC rules before import",
+    "regulation_source": {
+      "regulation": "CPSIA",
+      "section": "Section 14(b)",
+      "effective_date": "2008-11-12"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["Bicycle", "E-bike"],
+    "trigger_conditions": [
+      {
+        "field": "product.product_type",
+        "operator": "in",
+        "value": ["Bicycle", "E-bike"],
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "certification",
+        "description": "Signed General Certificate of Conformity (GCC) from US importer certifying compliance with CPSC 16 CFR 1512",
+        "source_path": "product.certifications"
+      },
+      {
+        "evidence_type": "test_report",
+        "description": "Supporting test reports demonstrating compliance with all applicable CPSC rules",
+        "source_path": "product.tests"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": ["US Customs Detention", "CPSC Fine", "Product Seizure", "Import Denial"],
+    "remediation": "1. US importer must prepare and sign GCC before product arrives at US port. 2. GCC must reference all applicable CPSC rules (16 CFR 1512, etc.). 3. Maintain GCC records for at least 3 years. 4. Provide GCC to distributors and retailers upon request.",
+    "related_rules": ["TRK-001", "TRK-002", "TRK-004"]
+  },
+  {
+    "rule_id": "TRK-004",
+    "category": "Certification",
+    "requirement": "Effective July 8, 2026, importers must electronically file certificate data (GCC or CPC) through the CBP ACE system before cargo arrival, covering over 600 HTS tariff codes including bicycles and e-bikes. Paper certificates are no longer sufficient. This CPSC eFiling rule applies to all consumer products subject to CPSC safety standards.",
+    "requirement_summary": "From July 2026, importers must e-file GCC/CPC via CBP ACE system before cargo arrival (no paper-only)",
+    "regulation_source": {
+      "regulation": "CPSIA / CPSC eFiling",
+      "section": "Section 14(a) + 16 CFR 1110",
+      "effective_date": "2026-07-08"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["Bicycle", "Kids Bicycle", "E-bike"],
+    "trigger_conditions": [],
+    "evidence_required": [
+      {
+        "evidence_type": "certification",
+        "description": "Electronic filing confirmation from CBP ACE system showing GCC/CPC data submitted before cargo arrival",
+        "source_path": "product.certifications"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": ["Cargo Seizure at Port", "CBP Fine", "Import Ban", "Virginia port enforcement precedent"],
+    "remediation": "1. Register for CBP ACE system access. 2. Prepare electronic GCC/CPC data for all products. 3. File certificate data via ACE before cargo arrives at US port (effective July 8, 2026). 4. Monitor CPSC eFiling guidance for updated HTS code lists. 5. Maintain electronic records for at least 5 years.",
+    "related_rules": ["TRK-003", "TRK-001", "TRK-002"]
+  }
+]

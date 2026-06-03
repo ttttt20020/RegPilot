@@ -1,0 +1,124 @@
+[
+  {
+    "rule_id": "FRK-001",
+    "category": "Frame",
+    "requirement": "The front fork shall absorb at least 39.5 J (350 in-lb) of energy with a deflection of no more than 64 mm (2.5 in) when tested per §1512.18(k)(1). No visible fractures shall result.",
+    "requirement_summary": "Front fork must absorb ≥39.5J energy with ≤64mm deflection; no fractures",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "§1512.13(a)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": [
+      "Bicycle",
+      "Kids Bicycle",
+      "E-bike"
+    ],
+    "trigger_conditions": [],
+    "evidence_required": [
+      {
+        "evidence_type": "bom_component",
+        "description": "BOM must contain front fork component",
+        "source_path": "product.components"
+      },
+      {
+        "evidence_type": "test_report",
+        "description": "Front fork static load test report per §1512.13(a) showing no permanent deformation at 400N",
+        "source_path": "product.tests"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": [
+      "Recall",
+      "CPSC Fine",
+      "Lawsuit"
+    ],
+    "remediation": "Ensure front fork passes static load test at 400N without permanent deformation per §1512.13(a).",
+    "related_rules": [
+      "FRM-001",
+      "TST-003"
+    ]
+  },
+  {
+    "rule_id": "FRM-001",
+    "category": "Frame",
+    "requirement": "The fork and frame assembly shall withstand a load of 890 N (200 lbf) or an energy of at least 39.5 J (350 in-lb), whichever results in greater force, applied to the fork at the axle attachment point against the direction of rake per §1512.18(k)(2). There shall be no visible evidence of fracture and no deformation that significantly limits steering angle.",
+    "requirement_summary": "Frame/fork: withstand 890N or 39.5J at fork axle; no fracture or steering limit",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "§1512.14(a)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": [
+      "Bicycle",
+      "Kids Bicycle",
+      "E-bike"
+    ],
+    "trigger_conditions": [],
+    "evidence_required": [
+      {
+        "evidence_type": "bom_component",
+        "description": "BOM must contain frame and fork components",
+        "source_path": "product.components"
+      },
+      {
+        "evidence_type": "test_report",
+        "description": "Frame assembly road test report per §1512.18(p) showing no structural failure",
+        "source_path": "product.tests"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": [
+      "Recall",
+      "CPSC Fine",
+      "Lawsuit"
+    ],
+    "remediation": "Ensure frame and fork assembly passes road test without structural failure per §1512.14(a).",
+    "related_rules": [
+      "FRK-001",
+      "TST-003"
+    ]
+  },
+  {
+    "rule_id": "FRM-002",
+    "category": "Frame",
+    "requirement": "The seat post clamp shall securely hold the seat post at any position within its adjustment range without slipping under normal riding conditions.",
+    "requirement_summary": "Seat post clamp must hold seat post securely without slipping",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "§1512.15(a)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": [
+      "Bicycle",
+      "Kids Bicycle",
+      "E-bike"
+    ],
+    "trigger_conditions": [],
+    "evidence_required": [
+      {
+        "evidence_type": "bom_component",
+        "description": "BOM must contain seat post clamp component",
+        "source_path": "product.components"
+      },
+      {
+        "evidence_type": "test_report",
+        "description": "Seat post clamp holding test report per §1512.15(a) showing no slippage",
+        "source_path": "product.tests"
+      }
+    ],
+    "risk_level": "Major",
+    "consequences": [
+      "Customs Hold",
+      "Lawsuit"
+    ],
+    "remediation": "Ensure seat post clamp securely holds seat post without slippage per §1512.15(a).",
+    "related_rules": [
+      "LBL-003",
+      "FRM-001"
+    ]
+  }
+]

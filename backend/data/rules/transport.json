@@ -1,0 +1,81 @@
+[
+  {
+    "rule_id": "UN383-001",
+    "category": "Battery Transport",
+    "requirement": "Lithium batteries shipped by air or sea must pass UN 38.3 testing (8 tests: altitude simulation, thermal test, vibration, shock, external short circuit, impact/crush, overcharge, forced discharge) before international transport. A UN 38.3 test summary report must accompany each shipment.",
+    "requirement_summary": "Lithium batteries must pass all 8 UN 38.3 tests (altitude, thermal, vibration, shock, short circuit, impact, overcharge, forced discharge) for international transport",
+    "regulation_source": {
+      "regulation": "UN 38.3",
+      "section": "ST/SG/AC.10/11/Rev.7 - Tests and Criteria Part III",
+      "effective_date": "2023-01-01"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["E-bike"],
+    "trigger_conditions": [
+      {
+        "field": "product.has_battery",
+        "operator": "eq",
+        "value": true,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "test_report",
+        "description": "UN 38.3 test report covering all 8 tests (T.1-T.8) with pass results",
+        "source_path": "product.tests"
+      },
+      {
+        "evidence_type": "document",
+        "description": "UN 38.3 Test Summary Report (required since July 2023 for all lithium battery shipments)",
+        "source_path": "product.certifications"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": ["Shipping Rejection", "Cargo Seizure", "Export Delay"],
+    "remediation": "1. Submit lithium battery to UN 38.3 accredited testing lab for all 8 tests. 2. Obtain UN 38.3 Test Summary Report. 3. Ensure MSDS and transport classification documents are prepared. 4. Declare as Class 9 dangerous goods with proper lithium battery transport labels.",
+    "related_rules": ["BAT-001", "BAT-002", "BAT-003", "BAT-004"]
+  },
+  {
+    "rule_id": "UN383-002",
+    "category": "Battery Transport",
+    "requirement": "Lithium batteries shipped by air must have State of Charge (SoC) not exceeding 30% of rated capacity. Each package must bear the lithium battery handling label (as per IATA PI 966/967) and be declared as Class 9 dangerous goods. Effective 2026, this requirement is strictly enforced for all international air freight.",
+    "requirement_summary": "Air-shipped lithium batteries must have SoC ≤30% and bear proper Class 9 dangerous goods labels per IATA PI 966/967",
+    "regulation_source": {
+      "regulation": "UN 38.3 / IATA DGR",
+      "section": "PI 966 / PI 967 - Air Transport SoC Limit",
+      "effective_date": "2026-01-01"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["E-bike"],
+    "trigger_conditions": [
+      {
+        "field": "product.has_battery",
+        "operator": "eq",
+        "value": true,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "document",
+        "description": "Battery SoC verification document showing charge level ≤30% before air shipment",
+        "source_path": "product.tests"
+      },
+      {
+        "evidence_type": "document",
+        "description": "MSDS (Material Safety Data Sheet) for lithium battery",
+        "source_path": "product.certifications"
+      },
+      {
+        "evidence_type": "document",
+        "description": "Transport classification report declaring Class 9 dangerous goods",
+        "source_path": "product.certifications"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": ["Air Freight Rejection", "Cargo Seizure at Airport", "Carrier Blacklist"],
+    "remediation": "1. Discharge battery to ≤30% SoC before air shipment. 2. Prepare MSDS and transport classification report. 3. Apply lithium battery handling label per IATA requirements. 4. Declare as Class 9 dangerous goods on air waybill. 5. Use UN-approved packaging.",
+    "related_rules": ["UN383-001", "BAT-001"]
+  }
+]

@@ -1,0 +1,172 @@
+[
+  {
+    "rule_id": "ELS-001",
+    "category": "Electrical Safety",
+    "requirement": "The insulation resistance between different parts of the E-bike electrical system and between parts and ground shall be greater than the specified minimum values to prevent leakage and short circuits.",
+    "requirement_summary": "E-bike electrical insulation resistance must exceed specified minimums",
+    "regulation_source": {
+      "regulation": "UL 2849",
+      "section": "Insulation Impedance Test",
+      "effective_date": "2020-10-23"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["E-bike"],
+    "trigger_conditions": [
+      {
+        "field": "product.has_motor",
+        "operator": "eq",
+        "value": true,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "test_report",
+        "description": "UL 2849 insulation impedance test report showing resistance above minimum values",
+        "source_path": "product.tests"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": ["Recall", "CPSC Fine", "Amazon Delist"],
+    "remediation": "Ensure E-bike electrical system passes UL 2849 insulation impedance test with resistance values above specified minimums to prevent leakage and short circuits.",
+    "related_rules": ["ELS-002", "ELS-003", "ELS-004", "ELS-005"]
+  },
+  {
+    "rule_id": "ELS-002",
+    "category": "Electrical Safety",
+    "requirement": "The E-bike electrical system shall pass a dielectric withstand (hi-pot) test, with no insulation breakdown occurring at test voltages higher than normal operating voltage.",
+    "requirement_summary": "E-bike must pass hi-pot test with no insulation breakdown at elevated voltage",
+    "regulation_source": {
+      "regulation": "UL 2849",
+      "section": "Dielectric Withstand Test",
+      "effective_date": "2020-10-23"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["E-bike"],
+    "trigger_conditions": [
+      {
+        "field": "product.has_motor",
+        "operator": "eq",
+        "value": true,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "test_report",
+        "description": "UL 2849 dielectric withstand (hi-pot) test report showing no insulation breakdown",
+        "source_path": "product.tests"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": ["Recall", "CPSC Fine", "Amazon Delist"],
+    "remediation": "Ensure E-bike electrical system passes UL 2849 dielectric withstand test without insulation breakdown at elevated test voltages.",
+    "related_rules": ["ELS-001", "ELS-003", "ELS-004", "ELS-005"]
+  },
+  {
+    "rule_id": "ELS-003",
+    "category": "Electrical Safety",
+    "requirement": "The E-bike electrical system shall pass the IPX4 water exposure test (splashing water from all directions) without creating a safety hazard.",
+    "requirement_summary": "E-bike must pass IPX4 splash-water test without safety hazard",
+    "regulation_source": {
+      "regulation": "UL 2849",
+      "section": "Water Exposure Test - IPX4",
+      "effective_date": "2020-10-23"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["E-bike"],
+    "trigger_conditions": [
+      {
+        "field": "product.has_motor",
+        "operator": "eq",
+        "value": true,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "test_report",
+        "description": "UL 2849 IPX4 water exposure test report showing no safety hazard after splash testing",
+        "source_path": "product.tests"
+      }
+    ],
+    "risk_level": "Major",
+    "consequences": ["Customs Hold", "Amazon Delist"],
+    "remediation": "Ensure E-bike electrical system passes UL 2849 IPX4 water exposure test without safety hazards. Improve sealing and waterproofing of electrical connections as needed.",
+    "related_rules": ["ELS-001", "ELS-002", "ELS-004", "ELS-005"]
+  },
+  {
+    "rule_id": "ELS-004",
+    "category": "Electrical Safety",
+    "requirement": "The E-bike battery management system (BMS) shall pass software evaluation and functional safety assessment to ensure software does not cause safety hazards due to faults.",
+    "requirement_summary": "BMS must pass software evaluation and functional safety assessment",
+    "regulation_source": {
+      "regulation": "UL 2849",
+      "section": "Software Evaluation & Functional Safety Assessment",
+      "effective_date": "2020-10-23"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["E-bike"],
+    "trigger_conditions": [
+      {
+        "field": "product.has_bms_software",
+        "operator": "eq",
+        "value": true,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "test_report",
+        "description": "UL 2849 software evaluation report for BMS",
+        "source_path": "product.tests"
+      },
+      {
+        "evidence_type": "spec_sheet_value",
+        "description": "Functional safety assessment documentation for BMS software",
+        "source_path": "product.bms_safety_assessment"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": ["Recall", "CPSC Fine", "Amazon Delist"],
+    "remediation": "Ensure BMS passes UL 2849 software evaluation and functional safety assessment. Address any identified software faults that could lead to safety hazards.",
+    "related_rules": ["ELS-001", "ELS-002", "ELS-003", "ELS-005", "BAT-001", "BAT-003", "BAT-005", "MOT-003"]
+  },
+  {
+    "rule_id": "ELS-005",
+    "category": "Electrical Safety",
+    "requirement": "The E-bike charger shall comply with UL 2849 safety requirements, including input testing, temperature testing, and charging protection functions.",
+    "requirement_summary": "Charger must meet UL 2849 safety requirements (input, temp, protection)",
+    "regulation_source": {
+      "regulation": "UL 2849",
+      "section": "Charger Requirements",
+      "effective_date": "2020-10-23"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["E-bike"],
+    "trigger_conditions": [
+      {
+        "field": "product.has_charger",
+        "operator": "eq",
+        "value": true,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "test_report",
+        "description": "UL 2849 charger test report including input, temperature, and protection function tests",
+        "source_path": "product.tests"
+      },
+      {
+        "evidence_type": "spec_sheet_value",
+        "description": "Charger specification sheet documenting safety features and protection functions",
+        "source_path": "product.charger_spec"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": ["Recall", "CPSC Fine", "Amazon Delist"],
+    "remediation": "Ensure the E-bike charger complies with UL 2849 safety requirements for input testing, temperature testing, and charging protection functions.",
+    "related_rules": ["ELS-001", "ELS-002", "ELS-003", "ELS-004", "BAT-001"]
+  }
+]

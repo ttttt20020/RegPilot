@@ -1,0 +1,187 @@
+[
+  {
+    "rule_id": "REF-001",
+    "category": "Reflector",
+    "requirement": "Bicycles shall be equipped with a front-facing reflector that is essentially colorless.",
+    "requirement_summary": "Must have essentially colorless front reflector",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "\u00a71512.16(a) & (c)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["Bicycle", "Kids Bicycle", "E-bike"],
+    "trigger_conditions": [
+      {
+        "field": "product.is_sidewalk_bicycle",
+        "operator": "neq",
+        "value": true,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "bom_component",
+        "description": "BOM must contain front reflector component",
+        "source_path": "product.components"
+      },
+      {
+        "evidence_type": "test_report",
+        "description": "Reflector performance test report per Table 1 & 2 of \u00a71512.16",
+        "source_path": "product.tests"
+      }
+    ],
+    "risk_level": "Major",
+    "consequences": ["Customs Hold", "Amazon Delist"],
+    "remediation": "Install a front-facing essentially colorless reflector that meets \u00a71512.16(c) performance requirements.",
+    "related_rules": ["REF-002", "REF-003", "REF-004", "REF-005"]
+  },
+  {
+    "rule_id": "REF-002",
+    "category": "Reflector",
+    "requirement": "Bicycles shall be equipped with a rear-facing red reflector mounted on the seat post behind, with the top of the reflector at least 76mm (3in) below the intersection of the seat surface and the seat post.",
+    "requirement_summary": "Must have red rear reflector on seat post, top \u226576mm below seat",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "\u00a71512.16(a) & (d)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["Bicycle", "Kids Bicycle", "E-bike"],
+    "trigger_conditions": [
+      {
+        "field": "product.is_sidewalk_bicycle",
+        "operator": "neq",
+        "value": true,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "bom_component",
+        "description": "BOM must contain rear red reflector component",
+        "source_path": "product.components"
+      },
+      {
+        "evidence_type": "spec_sheet_value",
+        "description": "Spec sheet must confirm rear reflector mounting position relative to seat post",
+        "source_path": "product.reflector_rear_position_mm"
+      },
+      {
+        "evidence_type": "test_report",
+        "description": "Reflector performance test report per \u00a71512.16(d)",
+        "source_path": "product.tests"
+      }
+    ],
+    "risk_level": "Major",
+    "consequences": ["Customs Hold", "Amazon Delist"],
+    "remediation": "Install a rear red reflector on the seat post with top at least 76mm below the seat-seat post intersection, meeting \u00a71512.16(d) performance requirements.",
+    "related_rules": ["REF-001", "REF-003", "REF-004", "REF-005"]
+  },
+  {
+    "rule_id": "REF-003",
+    "category": "Reflector",
+    "requirement": "Each pedal shall be equipped with reflectors on the front and rear surfaces, which shall be essentially colorless or amber.",
+    "requirement_summary": "Pedals must have colorless or amber reflectors on front and rear",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "\u00a71512.16(e) & \u00a71512.7(c)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["Bicycle", "Kids Bicycle", "E-bike"],
+    "trigger_conditions": [
+      {
+        "field": "product.is_sidewalk_bicycle",
+        "operator": "neq",
+        "value": true,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "bom_component",
+        "description": "BOM must show pedal assemblies include reflector devices",
+        "source_path": "product.components"
+      },
+      {
+        "evidence_type": "test_report",
+        "description": "Pedal reflector performance test report per \u00a71512.16(e)",
+        "source_path": "product.tests"
+      }
+    ],
+    "risk_level": "Minor",
+    "consequences": ["Customs Hold"],
+    "remediation": "Equip each pedal with essentially colorless or amber reflectors on both front and rear surfaces per \u00a71512.16(e).",
+    "related_rules": ["REF-001", "REF-002", "REF-004", "REF-005"]
+  },
+  {
+    "rule_id": "REF-004",
+    "category": "Reflector",
+    "requirement": "Each wheel shall be equipped with side reflectors: reflective tire sidewalls, or spoke-mounted reflectors, or (for non-caliper brake) reflective rims. Front wheel reflectors shall be colorless or amber; rear wheel reflectors shall be colorless or red.",
+    "requirement_summary": "Wheels must have side reflectors (tire/spoke/rim); front: colorless/amber, rear: colorless/red",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "\u00a71512.16(b) & (f)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["Bicycle", "Kids Bicycle", "E-bike"],
+    "trigger_conditions": [
+      {
+        "field": "product.is_sidewalk_bicycle",
+        "operator": "neq",
+        "value": true,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "bom_component",
+        "description": "BOM must contain side reflector components or reflective tires",
+        "source_path": "product.components"
+      },
+      {
+        "evidence_type": "test_report",
+        "description": "Side reflector performance test report per \u00a71512.16(f)",
+        "source_path": "product.tests"
+      }
+    ],
+    "risk_level": "Minor",
+    "consequences": ["Customs Hold"],
+    "remediation": "Equip each wheel with side reflectors (reflective tire sidewalls, spoke-mounted reflectors, or reflective rims) per \u00a71512.16(b) & (f).",
+    "related_rules": ["REF-001", "REF-002", "REF-003", "REF-005"]
+  },
+  {
+    "rule_id": "REF-005",
+    "category": "Reflector",
+    "requirement": "Sidewalk bicycles are not required to be equipped with reflectors.",
+    "requirement_summary": "Sidewalk bicycles are exempt from reflector requirements",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "\u00a71512.16 (introductory paragraph)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Exemption",
+    "applicable_products": ["Kids Bicycle"],
+    "trigger_conditions": [
+      {
+        "field": "product.is_sidewalk_bicycle",
+        "operator": "eq",
+        "value": true,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "spec_sheet_value",
+        "description": "Seat height specification confirming sidewalk bicycle classification (seat height \u2264 635mm)",
+        "source_path": "product.seat_height_mm"
+      }
+    ],
+    "risk_level": "Info",
+    "consequences": [],
+    "remediation": "No action required. Sidewalk bicycles are exempt from reflector requirements per \u00a71512.16.",
+    "related_rules": ["REF-001", "REF-002", "REF-003", "REF-004"]
+  }
+]

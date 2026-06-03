@@ -1,0 +1,224 @@
+[
+  {
+    "rule_id": "TST-001",
+    "category": "Testing",
+    "requirement": "Children's products must be tested by a CPSC-accepted third-party laboratory to verify compliance with all applicable children's product safety rules.",
+    "requirement_summary": "Kids products must be tested by CPSC-accepted third-party lab",
+    "regulation_source": {
+      "regulation": "CPSIA",
+      "section": "Section 14(a)(1)",
+      "effective_date": "2011-08-14"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": [
+      "Kids Bicycle"
+    ],
+    "trigger_conditions": [
+      {
+        "field": "product.target_age_group",
+        "operator": "eq",
+        "value": "children",
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "test_report",
+        "description": "Test report from CPSC-accepted third-party laboratory confirming compliance with all applicable safety rules",
+        "source_path": "product.tests"
+      },
+      {
+        "evidence_type": "certificate",
+        "description": "Laboratory CPSC acceptance number",
+        "source_path": "product.documentation"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": [
+      "Recall",
+      "CPSC Fine",
+      "Import Denial",
+      "Amazon Delist"
+    ],
+    "remediation": "Submit the product to a CPSC-accepted third-party laboratory for testing against all applicable children's product safety rules per CPSIA Section 14(a)(1).",
+    "related_rules": [
+      "TST-002",
+      "CHM-001",
+      "CHM-002",
+      "CHM-003",
+      "CHM-004",
+      "TRK-001",
+      "TRK-002"
+    ]
+  },
+  {
+    "rule_id": "TST-002",
+    "category": "Testing",
+    "requirement": "Manufacturers or importers of children's products must issue a Children's Product Certificate (CPC) based on third-party test results, certifying that the product complies with all applicable safety rules.",
+    "requirement_summary": "Must issue CPC based on third-party test results for kids products",
+    "regulation_source": {
+      "regulation": "CPSIA",
+      "section": "Section 14(a)(1) & (2)",
+      "effective_date": "2011-08-14"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": [
+      "Kids Bicycle"
+    ],
+    "trigger_conditions": [
+      {
+        "field": "product.target_age_group",
+        "operator": "eq",
+        "value": "children",
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "certificate",
+        "description": "Children's Product Certificate (CPC) document",
+        "source_path": "product.documentation"
+      },
+      {
+        "evidence_type": "certificate",
+        "description": "CPC must reference the test report numbers from third-party testing",
+        "source_path": "product.documentation"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": [
+      "Recall",
+      "CPSC Fine",
+      "Import Denial",
+      "Customs Hold"
+    ],
+    "remediation": "Issue a Children's Product Certificate (CPC) based on third-party test results certifying compliance with all applicable safety rules per CPSIA Section 14(a)(1) & (2).",
+    "related_rules": [
+      "TST-001",
+      "CHM-001",
+      "CHM-002",
+      "CHM-003",
+      "TRK-001"
+    ]
+  },
+  {
+    "rule_id": "TST-003",
+    "category": "Testing",
+    "requirement": "Non-sidewalk bicycles shall be road-tested by a rider weighing at least 68.1kg (150 lb) for at least 6.4km (4 mi), including 5 passes over a 30.5m (100 ft) bump course, with no structural, braking, tire failure or loosening of seat, handlebar, controls, or reflectors.",
+    "requirement_summary": "Non-sidewalk bikes must pass 6.4km road test with 68.1kg rider and 5 bump passes",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "§1512.17(a) & §1512.18(p)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": [
+      "Bicycle",
+      "E-bike"
+    ],
+    "trigger_conditions": [
+      {
+        "field": "product.is_sidewalk_bicycle",
+        "operator": "neq",
+        "value": true,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "test_report",
+        "description": "Road test report per §1512.17(a) & §1512.18(p) with test conditions and results",
+        "source_path": "product.tests"
+      }
+    ],
+    "risk_level": "Major",
+    "consequences": [
+      "Customs Hold",
+      "Amazon Delist"
+    ],
+    "remediation": "Conduct road test per §1512.17(a) with a ≥68.1kg rider over ≥6.4km including 5 bump course passes, ensuring no structural or component failures.",
+    "related_rules": [
+      "TST-004",
+      "TST-005",
+      "BRK-002"
+    ]
+  },
+  {
+    "rule_id": "TST-004",
+    "category": "Testing",
+    "requirement": "Sidewalk bicycles shall be drop-tested from a height of 300mm (1 ft) onto a paved surface 3 times (with weight), and the wheels, frame, seat, handlebar, and fork shall show no fracture.",
+    "requirement_summary": "Sidewalk bikes must pass 300mm drop test (3 drops with weight), no fractures",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "§1512.17(b) & §1512.18(q)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": [
+      "Kids Bicycle"
+    ],
+    "trigger_conditions": [
+      {
+        "field": "product.is_sidewalk_bicycle",
+        "operator": "eq",
+        "value": true,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "test_report",
+        "description": "Drop test report per §1512.17(b) & §1512.18(q) with test conditions and results",
+        "source_path": "product.tests"
+      }
+    ],
+    "risk_level": "Major",
+    "consequences": [
+      "Customs Hold",
+      "Amazon Delist"
+    ],
+    "remediation": "Conduct 300mm drop test per §1512.17(b) with 3 drops and verify no fractures in wheels, frame, seat, handlebar, or fork.",
+    "related_rules": [
+      "TST-003",
+      "TST-005"
+    ]
+  },
+  {
+    "rule_id": "TST-005",
+    "category": "Testing",
+    "requirement": "The handlebar stem shall withstand a force of 2000 N (450 lbf) for bicycles or 1000 N (225 lbf) for sidewalk bicycles, applied at 45° from the stem centerline in a forward direction at the handlebar attachment point per §1512.18(g). No visible fractures shall result.",
+    "requirement_summary": "Stem: 2000N at 45° (1000N sidewalk) without fracture",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "§1512.6(b) & §1512.18(g)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": [
+      "Bicycle",
+      "Kids Bicycle",
+      "E-bike"
+    ],
+    "trigger_conditions": [],
+    "evidence_required": [
+      {
+        "evidence_type": "test_report",
+        "description": "Handlebar stem strength test report per §1512.6(b) & §1512.18(g)",
+        "source_path": "product.tests"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": [
+      "Recall",
+      "CPSC Fine",
+      "Lawsuit"
+    ],
+    "remediation": "Ensure handlebar stem passes strength test at 2000N (regular bicycle) or 1000N (sidewalk bicycle) without failure per §1512.6(b).",
+    "related_rules": [
+      "LBL-002",
+      "WRN-002",
+      "TST-003",
+      "TST-004"
+    ]
+  }
+]

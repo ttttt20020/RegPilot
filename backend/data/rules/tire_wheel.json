@@ -1,0 +1,122 @@
+[
+  {
+    "rule_id": "TIR-001",
+    "category": "Wheel",
+    "requirement": "Tires shall remain on the rim when inflated to the maximum rated pressure and subjected to a 2-hour test at that pressure. The tire-rim assembly shall not separate under normal operating conditions.",
+    "requirement_summary": "Tires must stay on rim at max rated pressure for 2 hours without separation",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "\u00a71512.10(a)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["Bicycle", "Kids Bicycle", "E-bike"],
+    "trigger_conditions": [],
+    "evidence_required": [
+      {
+        "evidence_type": "bom_component",
+        "description": "BOM must contain tire and rim components",
+        "source_path": "product.components"
+      },
+      {
+        "evidence_type": "test_report",
+        "description": "Tire retention test report per \u00a71512.10(a) showing no tire-rim separation at max rated pressure",
+        "source_path": "product.tests"
+      }
+    ],
+    "risk_level": "Major",
+    "consequences": ["Recall", "Customs Hold"],
+    "remediation": "Ensure tire-rim compatibility and conduct tire retention test per \u00a71512.10(a) at maximum rated pressure.",
+    "related_rules": ["TIR-002", "WHL-001"]
+  },
+  {
+    "rule_id": "TIR-002",
+    "category": "Wheel",
+    "requirement": "Inflatable tires shall have a maximum pressure rating marked on the tire sidewall. The marking shall be in the format 'Max. Inflate to ___ PSI/kPa' or equivalent.",
+    "requirement_summary": "Inflatable tires must have max pressure rating marked on sidewall",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "\u00a71512.10(b)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["Bicycle", "Kids Bicycle", "E-bike"],
+    "trigger_conditions": [],
+    "evidence_required": [
+      {
+        "evidence_type": "bom_component",
+        "description": "BOM must contain tire components with pressure rating specifications",
+        "source_path": "product.components"
+      },
+      {
+        "evidence_type": "product_photo",
+        "description": "Product photo showing tire sidewall pressure marking",
+        "source_path": "product.photos"
+      }
+    ],
+    "risk_level": "Minor",
+    "consequences": ["Customs Hold"],
+    "remediation": "Mark maximum inflation pressure on tire sidewall per \u00a71512.10(b).",
+    "related_rules": ["TIR-001"]
+  },
+  {
+    "rule_id": "WHL-001",
+    "category": "Wheel",
+    "requirement": "Wheels shall be securely attached to the bicycle frame or fork. Quick-release mechanisms, if used, shall have a positive locking action and shall be clearly marked to indicate the open and closed positions.",
+    "requirement_summary": "Wheels must be securely attached; quick-release must have positive locking and open/closed markings",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "\u00a71512.11(a)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["Bicycle", "Kids Bicycle", "E-bike"],
+    "trigger_conditions": [],
+    "evidence_required": [
+      {
+        "evidence_type": "bom_component",
+        "description": "BOM must contain wheel and axle/quick-release components",
+        "source_path": "product.components"
+      },
+      {
+        "evidence_type": "product_photo",
+        "description": "Product photo showing quick-release mechanism with open/closed position markings",
+        "source_path": "product.photos"
+      }
+    ],
+    "risk_level": "Major",
+    "consequences": ["Recall", "Customs Hold", "Lawsuit"],
+    "remediation": "Ensure wheels are securely attached and quick-release mechanisms have positive locking with open/closed markings per \u00a71512.11(a).",
+    "related_rules": ["TIR-001", "HUB-001"]
+  },
+  {
+    "rule_id": "HUB-001",
+    "category": "Wheel",
+    "requirement": "Front and rear wheel hubs shall be securely attached and shall not loosen under normal riding conditions. Hub axle nuts shall be properly tightened to the manufacturer's specified torque.",
+    "requirement_summary": "Hub axles must be securely fastened and not loosen during normal use",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "\u00a71512.12",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["Bicycle", "Kids Bicycle", "E-bike"],
+    "trigger_conditions": [],
+    "evidence_required": [
+      {
+        "evidence_type": "bom_component",
+        "description": "BOM must contain hub components with axle specifications",
+        "source_path": "product.components"
+      },
+      {
+        "evidence_type": "spec_sheet_value",
+        "description": "Spec sheet documenting hub axle torque specifications",
+        "source_path": "product.specifications"
+      }
+    ],
+    "risk_level": "Major",
+    "consequences": ["Customs Hold", "Lawsuit"],
+    "remediation": "Ensure hub axles are properly tightened to manufacturer's specified torque per \u00a71512.12.",
+    "related_rules": ["WHL-001", "TIR-001"]
+  }
+]

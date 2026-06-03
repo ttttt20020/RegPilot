@@ -1,0 +1,142 @@
+[
+  {
+    "rule_id": "CHM-001",
+    "category": "Chemical",
+    "requirement": "Children's products shall not contain lead in accessible component substrate materials exceeding 100 ppm (0.01%).",
+    "requirement_summary": "Kids product substrate lead content must be \u2264100 ppm",
+    "regulation_source": {
+      "regulation": "CPSIA",
+      "section": "Section 101(a)",
+      "effective_date": "2011-08-14"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["Kids Bicycle"],
+    "trigger_conditions": [
+      {
+        "field": "product.target_age_group",
+        "operator": "eq",
+        "value": "children",
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "test_report",
+        "description": "Third-party lab lead content test report (XRF or chemical analysis) showing substrate lead \u2264100 ppm",
+        "source_path": "product.tests"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": ["Recall", "CPSC Fine", "Import Denial", "Amazon Delist"],
+    "remediation": "Replace or reformulate substrate materials to ensure lead content does not exceed 100 ppm per CPSIA Section 101(a).",
+    "related_rules": ["CHM-002", "CHM-003", "TST-001", "TST-002"]
+  },
+  {
+    "rule_id": "CHM-002",
+    "category": "Chemical",
+    "requirement": "Children's products shall not contain paint or surface coatings with lead content exceeding 90 ppm (0.009%).",
+    "requirement_summary": "Kids product paint/coating lead content must be \u226490 ppm",
+    "regulation_source": {
+      "regulation": "CPSIA",
+      "section": "Section 101(f)",
+      "effective_date": "2011-08-14"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["Kids Bicycle"],
+    "trigger_conditions": [
+      {
+        "field": "product.target_age_group",
+        "operator": "eq",
+        "value": "children",
+        "logic": "AND"
+      },
+      {
+        "field": "product.has_coating",
+        "operator": "eq",
+        "value": true,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "test_report",
+        "description": "Third-party lab coating lead content test report showing paint/surface coating lead \u226490 ppm",
+        "source_path": "product.tests"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": ["Recall", "CPSC Fine", "Import Denial", "Amazon Delist"],
+    "remediation": "Replace or reformulate paint and surface coatings to ensure lead content does not exceed 90 ppm per CPSIA Section 101(f).",
+    "related_rules": ["CHM-001", "CHM-003", "TST-001", "TST-002"]
+  },
+  {
+    "rule_id": "CHM-003",
+    "category": "Chemical",
+    "requirement": "Children's toys or child care articles containing plasticized components that can be placed in the mouth shall not contain more than 0.1% of each of the six specified phthalates: DEHP, DBP, BBP, DINP, DnOP, DIDP.",
+    "requirement_summary": "Kids product mouthable plastic parts must have each of 6 phthalates \u22640.1%",
+    "regulation_source": {
+      "regulation": "CPSIA",
+      "section": "Section 108",
+      "effective_date": "2009-02-10"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["Kids Bicycle"],
+    "trigger_conditions": [
+      {
+        "field": "product.target_age_group",
+        "operator": "eq",
+        "value": "children",
+        "logic": "AND"
+      },
+      {
+        "field": "product.has_mouthable_plastic_parts",
+        "operator": "eq",
+        "value": true,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "test_report",
+        "description": "Third-party lab phthalates test report (GC-MS) showing each of 6 phthalates \u22640.1%",
+        "source_path": "product.tests"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": ["Recall", "CPSC Fine", "Import Denial", "Amazon Delist"],
+    "remediation": "Replace plasticized components that can be placed in the mouth with phthalate-free alternatives, ensuring each of DEHP, DBP, BBP, DINP, DnOP, DIDP does not exceed 0.1% per CPSIA Section 108.",
+    "related_rules": ["CHM-001", "CHM-002", "TST-001", "TST-002"]
+  },
+  {
+    "rule_id": "CHM-004",
+    "category": "Chemical",
+    "requirement": "Products intended for children under 3 years of age shall not contain detachable small parts that can pass through the 16 CFR 1501 small parts cylinder test, to prevent swallowing and choking hazards.",
+    "requirement_summary": "Products for children <3 must not have detachable small parts (16 CFR 1501 cylinder test)",
+    "regulation_source": {
+      "regulation": "16 CFR 1501",
+      "section": "CPSIA Section 106",
+      "effective_date": "2011-08-14"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["Kids Bicycle"],
+    "trigger_conditions": [
+      {
+        "field": "product.target_age_max_months",
+        "operator": "lt",
+        "value": 36,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "test_report",
+        "description": "Small parts test report per 16 CFR 1501 cylinder test showing no detachable small parts",
+        "source_path": "product.tests"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": ["Recall", "CPSC Fine", "Lawsuit", "Amazon Delist"],
+    "remediation": "Eliminate or secure all small detachable parts that could pass through the 16 CFR 1501 small parts cylinder to prevent choking hazards for children under 3.",
+    "related_rules": ["CHM-001", "CHM-002", "CHM-003", "TST-001"]
+  }
+]

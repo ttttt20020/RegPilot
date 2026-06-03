@@ -1,0 +1,282 @@
+[
+  {
+    "rule_id": "BRK-001",
+    "category": "Brake",
+    "requirement": "Bicycles shall be equipped with front- and rear-wheel brakes or rear-wheel brakes only.",
+    "requirement_summary": "Must have front and rear brakes or rear-only brake",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "§1512.5(a)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": [
+      "Bicycle",
+      "Kids Bicycle",
+      "E-bike"
+    ],
+    "trigger_conditions": [],
+    "evidence_required": [
+      {
+        "evidence_type": "bom_component",
+        "description": "BOM must contain brake component(s) - handbrake_front, handbrake_rear, and/or footbrake",
+        "source_path": "product.brake_type"
+      },
+      {
+        "evidence_type": "spec_sheet_value",
+        "description": "Spec sheet must confirm brake configuration (front/rear/both type)",
+        "source_path": "product.brake_type"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": [
+      "Recall",
+      "CPSC Fine"
+    ],
+    "remediation": "Install front and/or rear brake system per CPSC 1512.5(a). For sidewalk bicycles with seat height < 560mm, a footbrake is acceptable as the sole brake.",
+    "related_rules": [
+      "BRK-002",
+      "BRK-003",
+      "BRK-004",
+      "BRK-005",
+      "BRK-006"
+    ]
+  },
+  {
+    "rule_id": "BRK-002",
+    "category": "Brake",
+    "requirement": "A bicycle equipped only with handbrakes shall have a stopping distance of no greater than 4.57 m (15 ft) from an actual test speed of 24 km/h (15 mph) or greater if the equivalent ground speed exceeds 24 km/h, or from 16 km/h (10 mph) if the equivalent ground speed is less than 24 km/h. The stopping force applied to the hand lever shall not exceed 178 N (40 lbf).",
+    "requirement_summary": "Handbrake stopping distance ≤ 4.57m at 24km/h (or 16km/h if max speed <24km/h), lever force ≤178N",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "§1512.5(b)(1)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": [
+      "Bicycle",
+      "E-bike"
+    ],
+    "trigger_conditions": [
+      {
+        "field": "product.brake_type",
+        "operator": "in",
+        "value": [
+          "hand",
+          "both"
+        ],
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "test_report",
+        "description": "Third-party lab report showing braking distance test results per §1512.18(d)(2)(vi)",
+        "source_path": "product.tests"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": [
+      "Recall",
+      "Customs Hold"
+    ],
+    "remediation": "Conduct third-party braking distance test. If distance exceeds 4.57m, adjust brake system design and retest.",
+    "related_rules": [
+      "BRK-001",
+      "BRK-003",
+      "BRK-004"
+    ]
+  },
+  {
+    "rule_id": "BRK-003",
+    "category": "Brake",
+    "requirement": "The grip dimension (maximum outside dimension between the brake hand lever and the handlebars) shall not exceed 89 mm (3.5 in) at any point between the pivot point and lever midpoint; for sidewalk bicycles the grip dimension shall not exceed 76 mm (3 in). The grip dimension may increase toward the open end of the lever but shall not increase by more than 12.7 mm (0.5 in) except for the last 12.7 mm of the lever.",
+    "requirement_summary": "Handbrake grip dimension ≤ 89mm (76mm sidewalk); max increase 12.7mm toward open end",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "§1512.5(b)(3)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": [
+      "Bicycle",
+      "Kids Bicycle"
+    ],
+    "trigger_conditions": [
+      {
+        "field": "product.brake_type",
+        "operator": "in",
+        "value": [
+          "hand",
+          "both"
+        ],
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "spec_sheet_value",
+        "description": "Spec sheet or drawing showing handbrake grip dimension measurement",
+        "source_path": "components[handbrake_*].specifications[grip_dimension_mm]"
+      }
+    ],
+    "risk_level": "Major",
+    "consequences": [
+      "Amazon Delist",
+      "Customs Hold"
+    ],
+    "remediation": "Measure grip dimension. Replace or adjust handbrake levers to meet dimension requirements.",
+    "related_rules": [
+      "BRK-001",
+      "BRK-002",
+      "BRK-004"
+    ]
+  },
+  {
+    "rule_id": "BRK-004",
+    "category": "Brake",
+    "requirement": "A force of less than 44.5 N (10 lbf) shall cause the brake pads to contact the braking surface when applied to the handlever at 25mm from open end.",
+    "requirement_summary": "Handbrake operating force < 44.5N at 25mm from open end",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "§1512.5(b)(5)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": [
+      "Bicycle",
+      "Kids Bicycle",
+      "E-bike"
+    ],
+    "trigger_conditions": [
+      {
+        "field": "product.brake_type",
+        "operator": "in",
+        "value": [
+          "hand",
+          "both"
+        ],
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "test_report",
+        "description": "Test report showing handbrake operating force measurement",
+        "source_path": "product.tests"
+      }
+    ],
+    "risk_level": "Major",
+    "consequences": [
+      "Amazon Delist"
+    ],
+    "remediation": "Test operating force. Adjust cable tension or replace brake mechanism if force exceeds limit.",
+    "related_rules": [
+      "BRK-001",
+      "BRK-002",
+      "BRK-003"
+    ]
+  },
+  {
+    "rule_id": "BRK-005",
+    "category": "Brake",
+    "requirement": "Footbrakes shall produce a linearly proportional brake force from 89N to 310N applied pedal force, and shall not be less than 178N (40 lbf) braking force for an applied pedal force of 310N (70 lbf). All data points must fall within ±20% of the brake force based on the measured brake load using the least square method.",
+    "requirement_summary": "Footbrake force ≥178N at 310N pedal force; linear ±20% from 89N to 310N",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "§1512.5(c)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": [
+      "Bicycle",
+      "Kids Bicycle"
+    ],
+    "trigger_conditions": [
+      {
+        "field": "product.brake_type",
+        "operator": "in",
+        "value": [
+          "foot",
+          "both"
+        ],
+        "logic": "AND"
+      },
+      {
+        "field": "product.seat_height_lowest_mm",
+        "operator": "gte",
+        "value": 560,
+        "logic": "OR"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "bom_component",
+        "description": "BOM must contain footbrake component",
+        "source_path": "components[footbrake]"
+      },
+      {
+        "evidence_type": "test_report",
+        "description": "Third-party footbrake force test report per §1512.18(e)(2)",
+        "source_path": "product.tests"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": [
+      "Recall",
+      "CPSC Fine"
+    ],
+    "remediation": "Conduct footbrake force test. Replace or repair coaster brake assembly if force below 178N.",
+    "related_rules": [
+      "BRK-001",
+      "BRK-006"
+    ]
+  },
+  {
+    "rule_id": "BRK-006",
+    "category": "Brake",
+    "requirement": "Sidewalk bicycles shall not have handbrakes only. Sidewalk bicycles with seat height ≥ 560mm must be equipped with a footbrake meeting all footbrake requirements.",
+    "requirement_summary": "Sidewalk bicycle cannot have handbrake-only configuration; must have footbrake if seat height ≥ 560mm",
+    "regulation_source": {
+      "regulation": "CPSC 1512",
+      "section": "§1512.5(e)",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": [
+      "Kids Bicycle"
+    ],
+    "trigger_conditions": [
+      {
+        "field": "product.is_sidewalk_bicycle",
+        "operator": "eq",
+        "value": true,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "bom_component",
+        "description": "BOM must show footbrake component present (not handbrake-only)",
+        "source_path": "components[footbrake]"
+      },
+      {
+        "evidence_type": "spec_sheet_value",
+        "description": "Seat height specification confirming sidewalk bicycle classification",
+        "source_path": "product.seat_height_mm"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": [
+      "Recall",
+      "CPSC Fine",
+      "Import Denial"
+    ],
+    "remediation": "For sidewalk bicycles: install footbrake system. For non-sidewalk bicycles: this rule does not apply.",
+    "related_rules": [
+      "BRK-001",
+      "BRK-005",
+      "LBL-006"
+    ]
+  }
+]

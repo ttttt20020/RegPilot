@@ -1,0 +1,27 @@
+[
+  {
+    "rule_id": "BEL-001",
+    "category": "Bell",
+    "requirement": "Bicycles should be equipped with a bell or equivalent audible warning device. Federal regulation CPSC 1512 does not mandate this, but multiple state/local regulations require it (e.g., New York State Vehicle and Traffic Law §1236-b, Georgia, etc.).",
+    "requirement_summary": "Bell or audible warning device recommended (required by some states, not federal CPSC 1512)",
+    "regulation_source": {
+      "regulation": "State/Local",
+      "section": "e.g., NY VTL §12336-b",
+      "effective_date": "2011-06-13"
+    },
+    "mandate": "Optional",
+    "applicable_products": ["Bicycle", "Kids Bicycle", "E-bike"],
+    "trigger_conditions": [],
+    "evidence_required": [
+      {
+        "evidence_type": "bom_component",
+        "description": "BOM must contain bell or audible warning device component",
+        "source_path": "product.components"
+      }
+    ],
+    "risk_level": "Minor",
+    "consequences": ["Customs Hold"],
+    "remediation": "Install a bell or equivalent audible warning device if the product is intended for sale in jurisdictions that require it (e.g., New York, Georgia).",
+    "related_rules": ["WRN-003", "WRN-004"]
+  }
+]

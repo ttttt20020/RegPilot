@@ -1,0 +1,71 @@
+[
+  {
+    "rule_id": "FCC-001",
+    "category": "EMC",
+    "requirement": "All unintentional radiators (digital devices with clock frequencies ≥9 kHz) in e-bikes—including electronic throttles, displays, controllers, and chargers—must comply with FCC Part 15B radiated and conducted emission limits. The equipment must not cause harmful interference and must accept any interference received. Products must bear the FCC verification label or Supplier's Declaration of Conformity (SDoC).",
+    "requirement_summary": "E-bike digital circuits (throttle, display, controller, charger) must meet FCC Part 15B EMC emission limits and carry FCC label/SDoC",
+    "regulation_source": {
+      "regulation": "FCC Part 15",
+      "section": "Subpart B - Unintentional Radiators",
+      "effective_date": "2024-01-01"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["E-bike"],
+    "trigger_conditions": [
+      {
+        "field": "product.has_motor",
+        "operator": "eq",
+        "value": true,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "test_report",
+        "description": "FCC Part 15B EMC test report showing compliance with radiated and conducted emission limits for all digital circuits",
+        "source_path": "product.tests"
+      },
+      {
+        "evidence_type": "certification",
+        "description": "FCC Supplier's Declaration of Conformity (SDoC) or Verification of Conformity documentation",
+        "source_path": "product.certifications"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": ["US Customs Detention", "Amazon Delist", "FCC Fine up to $21,543/day"],
+    "remediation": "1. Submit all e-bike digital circuit assemblies (throttle, display, controller, charger) for FCC Part 15B testing at an accredited lab. 2. Obtain SDoC or Verification of Conformity. 3. Affix FCC compliance label on product. 4. Maintain test records for at least 2 years after product sale.",
+    "related_rules": ["ELS-001", "ELS-002", "MOT-003"]
+  },
+  {
+    "rule_id": "FCC-002",
+    "category": "EMC",
+    "requirement": "E-bike chargers that operate as switching power supplies must comply with FCC Part 15B conducted emission limits on AC power lines (150 kHz to 30 MHz) and radiated emission limits (30 MHz to 1 GHz). Chargers must also meet FCC labeling requirements.",
+    "requirement_summary": "E-bike chargers must meet FCC Part 15B conducted/radiated emission limits and carry FCC compliance label",
+    "regulation_source": {
+      "regulation": "FCC Part 15",
+      "section": "§15.107 / §15.109 - Conducted and Radiated Emission Limits",
+      "effective_date": "2024-01-01"
+    },
+    "mandate": "Mandatory",
+    "applicable_products": ["E-bike"],
+    "trigger_conditions": [
+      {
+        "field": "product.has_charger",
+        "operator": "eq",
+        "value": true,
+        "logic": "AND"
+      }
+    ],
+    "evidence_required": [
+      {
+        "evidence_type": "test_report",
+        "description": "FCC Part 15B charger EMC test report (conducted emissions 150kHz-30MHz, radiated emissions 30MHz-1GHz)",
+        "source_path": "product.tests"
+      }
+    ],
+    "risk_level": "Critical",
+    "consequences": ["US Customs Detention", "FCC Enforcement Action"],
+    "remediation": "Ensure charger passes FCC Part 15B EMC testing. Obtain SDoC documentation. Label charger with FCC compliance mark.",
+    "related_rules": ["FCC-001", "ELS-005"]
+  }
+]
