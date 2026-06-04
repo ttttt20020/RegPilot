@@ -52,6 +52,15 @@ export default function Home() {
     return map[level || ""] || { label: "—", bg: "#f1f5f9", text: "#475569" };
   };
 
+  const regUpdates = [
+    { date: "2026-06", text: "FCC Part 15 已纳入法规库，新增数字电路EMC限值、充电器EMC限值两条规则", tag: "新增" },
+    { date: "2026-06", text: "UN 38.3 锂电池运输安全规则已纳入，空运锂电池SoC不得超过30%", tag: "新增" },
+    { date: "2026-06", text: "GCC 一般合格证书要求已纳入，适用于儿童自行车及儿童产品", tag: "新增" },
+    { date: "2026-07", text: "CPSC eFiling 电子申报要求将于7月8日生效，违规将面临货物扣押及罚款", tag: "即将生效", urgent: true },
+    { date: "2026-01", text: "ASTM F963 已更新，重金属限量标准有小幅调整", tag: "更新" },
+    { date: "2025-12", text: "UL 2271 锂电池安全标准更新，新增热失控测试要求", tag: "更新" },
+  ];
+
   return (
     <SidebarLayout>
       <div style={{ padding: 32, paddingBottom: 64 }}>
@@ -414,6 +423,83 @@ export default function Home() {
             </div>
           </div>
         )}
+
+        <div style={{ marginBottom: 40 }}>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 8,
+              fontSize: 18,
+              fontWeight: 700,
+              color: "#1e293b",
+              marginBottom: 20,
+            }}
+          >
+            🔔 法规更新动态
+          </div>
+          <div
+            style={{
+              background: "#fff",
+              borderRadius: 16,
+              border: "1px solid #f1f5f9",
+              boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
+              overflow: "hidden",
+            }}
+          >
+            {regUpdates.map((item, idx) => (
+              <div
+                key={idx}
+                style={{
+                  display: "flex",
+                  alignItems: "flex-start",
+                  gap: 16,
+                  padding: "14px 20px",
+                  borderBottom: idx < regUpdates.length - 1 ? "1px solid #f8fafc" : "none",
+                  transition: "background 0.2s",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = "#faf5ff")}
+                onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
+              >
+                <span
+                  style={{
+                    fontSize: 12,
+                    fontWeight: 600,
+                    color: "#64748b",
+                    whiteSpace: "nowrap",
+                    marginTop: 2,
+                  }}
+                >
+                  {item.date}
+                </span>
+                <span
+                  style={{
+                    padding: "2px 8px",
+                    borderRadius: 4,
+                    fontSize: 10,
+                    fontWeight: 600,
+                    background: item.urgent ? "#fef2f2" : "#f0fdf4",
+                    color: item.urgent ? "#dc2626" : "#16a34a",
+                    whiteSpace: "nowrap",
+                    marginTop: 2,
+                  }}
+                >
+                  {item.tag}
+                </span>
+                <span
+                  style={{
+                    fontSize: 13,
+                    color: "#334155",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  {item.text}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
       </div>
     </SidebarLayout>
   );
