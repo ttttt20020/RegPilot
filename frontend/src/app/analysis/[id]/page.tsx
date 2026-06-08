@@ -1,5 +1,7 @@
 "use client";
 
+export const runtime = "edge";
+
 import { Fragment, useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import SidebarLayout from "@/components/layout/SidebarLayout";
