@@ -2,7 +2,7 @@
   "name": "regpilot",
   "private": true,
   "scripts": {
-    "build": "cd frontend && npm install && npm run build",
+    "build": "cd frontend && npm install && npx @cloudflare/next-on-pages",
     "dev": "cd frontend && npm run dev"
   }
 }
