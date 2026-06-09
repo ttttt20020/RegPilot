@@ -100,3 +100,10 @@ body {
   animation: shimmer 1.5s infinite;
 }
 .animate-pulse-soft { animation: pulse-soft 2s ease-in-out infinite; }
+
+/* Responsive sidebar */
+@media (max-width: 768px) {
+  .rp-sidebar { display: none !important; }
+  .rp-mobile-nav { display: flex !important; }
+  .rp-main { padding-bottom: 72px !important; }
+}
