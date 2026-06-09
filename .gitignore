@@ -7,8 +7,8 @@ env/
 venv/
 
 # Next.js
-frontend/.next/
-frontend/out/
+.next/
+out/
 
 # Python
 backend/.env
@@ -29,3 +29,10 @@ Thumbs.db
 # Temp files
 *.log
 /tmp/
+
+# Large files
+*.xlsx
+*.xls
+
+# Build output
+frontend/.vercel/
