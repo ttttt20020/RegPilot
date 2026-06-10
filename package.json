@@ -1,8 +1,14 @@
 {
   "name": "regpilot",
   "private": true,
+  "workspaces": [
+    "frontend"
+  ],
   "scripts": {
-    "build": "cd frontend && npm install && npx @cloudflare/next-on-pages",
+    "build": "cd frontend && npm ci && npx @cloudflare/next-on-pages",
     "dev": "cd frontend && npm run dev"
+  },
+  "dependencies": {
+    "@cloudflare/next-on-pages": "^1.13.16"
   }
 }

@@ -131,7 +131,6 @@ export default function Home() {
                 padding: 20,
                 borderLeft: "3px solid #c8a44e",
                 border: "1px solid #e8e4dc",
-                borderLeft: "3px solid #c8a44e",
                 boxShadow: "0 1px 2px rgba(0,0,0,0.04)",
               }}
             >

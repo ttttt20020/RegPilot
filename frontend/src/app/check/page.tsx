@@ -207,7 +207,7 @@ export default function CheckPage() {
                     ...(c.disabled
                       ? { background: "#f5f3ee", cursor: "not-allowed", opacity: 0.5 }
                       : country === c.value
-                        ? { background: "#fff", borderLeft: "3px solid #c8a44e", boxShadow: "0 1px 2px rgba(0,0,0,0.04)", border: "1px solid #e8e4dc", borderLeft: "3px solid #c8a44e" }
+                        ? { background: "#fff", borderLeft: "3px solid #c8a44e", boxShadow: "0 1px 2px rgba(0,0,0,0.04)", border: "1px solid #e8e4dc" }
                         : { background: "#fff", boxShadow: "0 1px 2px rgba(0,0,0,0.04)", border: "1px solid #e8e4dc" }),
                   }}
                 >
