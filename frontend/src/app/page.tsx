@@ -34,9 +34,9 @@ export default function Home() {
 
   const scoreRingColor = (score: number | null) => {
     const s = score ?? 0;
-    if (s >= 80) return "#22c55e";
-    if (s >= 60) return "#eab308";
-    return "#ef4444";
+    if (s >= 80) return "#2d7d46";
+    if (s >= 60) return "#b8860b";
+    return "#c0392b";
   };
 
   const riskBadge = (level: string | null) => {
@@ -44,12 +44,12 @@ export default function Home() {
       string,
       { label: string; bg: string; text: string }
     > = {
-      CRITICAL: { label: "高风险", bg: "#fef2f2", text: "#991b1b" },
-      HIGH: { label: "较高", bg: "#fff7ed", text: "#9a3412" },
-      MEDIUM: { label: "中等", bg: "#fefce8", text: "#854d0e" },
-      LOW: { label: "低风险", bg: "#f0fdf4", text: "#166534" },
+      CRITICAL: { label: "高风险", bg: "#fdf0ef", text: "#c0392b" },
+      HIGH: { label: "较高", bg: "#fdf6ee", text: "#b8860b" },
+      MEDIUM: { label: "中等", bg: "#fef9ef", text: "#b8860b" },
+      LOW: { label: "低风险", bg: "#eef6f0", text: "#2d7d46" },
     };
-    return map[level || ""] || { label: "—", bg: "#f1f5f9", text: "#475569" };
+    return map[level || ""] || { label: "—", bg: "#f5f4f0", text: "#666" };
   };
 
   const regUpdates = [
@@ -63,7 +63,7 @@ export default function Home() {
 
   return (
     <SidebarLayout>
-      <div style={{ padding: 32, paddingBottom: 64 }}>
+      <div style={{ padding: 32, paddingBottom: 64, background: "#fafaf8", minHeight: "100%" }}>
         <div style={{ marginBottom: 40 }}>
           <div
             style={{
@@ -78,11 +78,11 @@ export default function Home() {
                 width: 8,
                 height: 32,
                 borderRadius: 4,
-                background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+                background: "#c8a44e",
               }}
             />
             <h2
-              style={{ fontSize: 24, fontWeight: 700, color: "#1e293b" }}
+              style={{ fontSize: 24, fontWeight: 700, color: "#1a1a1a" }}
             >
               工作台
             </h2>
@@ -102,39 +102,37 @@ export default function Home() {
               label: "法规规则",
               value: "67",
               unit: "条",
-              color: "#6366f1",
-              emoji: "📋",
+              abbr: "RG",
             },
             {
               label: "覆盖法规",
               value: "6",
               unit: "部",
-              color: "#8b5cf6",
-              emoji: "📜",
+              abbr: "LR",
             },
             {
               label: "产品类型",
               value: "3",
               unit: "种",
-              color: "#22c55e",
-              emoji: "🚲",
+              abbr: "PT",
             },
             {
               label: "分析记录",
               value: String(analyses.length),
               unit: "条",
-              color: "#f59e0b",
-              emoji: "📊",
+              abbr: "AR",
             },
           ].map((stat) => (
             <div
               key={stat.label}
               style={{
                 background: "#fff",
-                borderRadius: 16,
+                borderRadius: 8,
                 padding: 20,
-                border: "1px solid #f1f5f9",
-                boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
+                borderLeft: "3px solid #c8a44e",
+                border: "1px solid #e8e4dc",
+                borderLeft: "3px solid #c8a44e",
+                boxShadow: "0 1px 2px rgba(0,0,0,0.04)",
               }}
             >
               <div
@@ -145,12 +143,28 @@ export default function Home() {
                   marginBottom: 12,
                 }}
               >
-                <span style={{ fontSize: 24 }}>{stat.emoji}</span>
+                <span
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: 28,
+                    height: 28,
+                    borderRadius: 4,
+                    background: "#f5f3ee",
+                    fontSize: 10,
+                    fontWeight: 700,
+                    color: "#c8a44e",
+                    letterSpacing: 0.5,
+                  }}
+                >
+                  {stat.abbr}
+                </span>
                 <span
                   style={{
                     fontSize: 10,
                     fontWeight: 600,
-                    color: "#94a3b8",
+                    color: "#999",
                     textTransform: "uppercase",
                     letterSpacing: 1,
                   }}
@@ -169,12 +183,12 @@ export default function Home() {
                   style={{
                     fontSize: 28,
                     fontWeight: 700,
-                    color: "#1e293b",
+                    color: "#1a1a1a",
                   }}
                 >
                   {stat.value}
                 </span>
-                <span style={{ fontSize: 14, color: "#94a3b8" }}>
+                <span style={{ fontSize: 14, color: "#999" }}>
                   {stat.unit}
                 </span>
               </div>
@@ -199,17 +213,33 @@ export default function Home() {
                   gap: 8,
                   fontSize: 18,
                   fontWeight: 700,
-                  color: "#1e293b",
+                  color: "#1a1a1a",
                 }}
               >
-                ⏱️ 最近分析
+                <span
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: 24,
+                    height: 24,
+                    borderRadius: 4,
+                    background: "#f5f3ee",
+                    fontSize: 10,
+                    fontWeight: 700,
+                    color: "#c8a44e",
+                  }}
+                >
+                  RA
+                </span>
+                最近分析
               </div>
               <button
                 onClick={() => router.push("/check")}
                 style={{
                   fontSize: 12,
                   fontWeight: 500,
-                  color: "#6366f1",
+                  color: "#c8a44e",
                   background: "none",
                   border: "none",
                   cursor: "pointer",
@@ -231,21 +261,20 @@ export default function Home() {
                 const ringColor = scoreRingColor(item.compliance_score);
                 const scoreColor =
                   score >= 80
-                    ? "#16a34a"
+                    ? "#2d7d46"
                     : score >= 60
-                    ? "#ca8a04"
-                    : "#dc2626";
+                    ? "#b8860b"
+                    : "#c0392b";
                 return (
                   <div
                     key={item.id}
                     onClick={() => router.push(`/analysis/${item.id}`)}
                     style={{
-                      background: "rgba(255,255,255,0.8)",
-                      backdropFilter: "blur(8px)",
-                      borderRadius: 16,
+                      background: "#fff",
+                      borderRadius: 8,
                       padding: 20,
-                      border: "1px solid rgba(255,255,255,0.6)",
-                      boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
+                      border: "1px solid #e8e4dc",
+                      boxShadow: "0 1px 2px rgba(0,0,0,0.04)",
                       cursor: "pointer",
                       transition: "all 0.2s",
                     }}
@@ -274,9 +303,9 @@ export default function Home() {
                           style={{
                             fontSize: 14,
                             fontWeight: 600,
-                            color: "#1e293b",
-                            border: "1px solid #6366f1",
-                            borderRadius: 6,
+                            color: "#1a1a1a",
+                            border: "1px solid #c8a44e",
+                            borderRadius: 4,
                             padding: "2px 8px",
                             outline: "none",
                             maxWidth: 160,
@@ -289,7 +318,7 @@ export default function Home() {
                           style={{
                             fontSize: 14,
                             fontWeight: 600,
-                            color: "#1e293b",
+                            color: "#1a1a1a",
                             maxWidth: 160,
                             overflow: "hidden",
                             textOverflow: "ellipsis",
@@ -309,7 +338,7 @@ export default function Home() {
                       <span
                         style={{
                           padding: "2px 8px",
-                          borderRadius: 6,
+                          borderRadius: 4,
                           fontSize: 10,
                           fontWeight: 600,
                           background: rb.bg,
@@ -322,15 +351,15 @@ export default function Home() {
                     <div
                       style={{
                         fontSize: 11,
-                        color: "#94a3b8",
+                        color: "#999",
                         marginBottom: 16,
                       }}
                     >
                       {item.product_type === "Kids_Bicycle"
-                        ? "👶 儿童自行车"
+                        ? "儿童自行车"
                         : item.product_type === "E-bike"
-                        ? "⚡ 电助力车"
-                        : "🚲 自行车"}
+                        ? "电助力车"
+                        : "自行车"}
                     </div>
                     <div
                       style={{
@@ -366,7 +395,7 @@ export default function Home() {
                               cy="18"
                               r="15"
                               fill="none"
-                              stroke="#f1f5f9"
+                              stroke="#e8e4dc"
                               strokeWidth="3"
                             />
                             <circle
@@ -398,7 +427,7 @@ export default function Home() {
                         <span
                           style={{
                             fontSize: 10,
-                            color: "#94a3b8",
+                            color: "#999",
                           }}
                         >
                           合规评分
@@ -407,7 +436,7 @@ export default function Home() {
                       <span
                         style={{
                           fontSize: 10,
-                          color: "#cbd5e1",
+                          color: "#999",
                         }}
                       >
                         {item.created_at
@@ -432,64 +461,97 @@ export default function Home() {
               gap: 8,
               fontSize: 18,
               fontWeight: 700,
-              color: "#1e293b",
+              color: "#1a1a1a",
               marginBottom: 20,
             }}
           >
-            🔔 法规更新动态
+            <span
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: 24,
+                height: 24,
+                borderRadius: 4,
+                background: "#f5f3ee",
+                fontSize: 10,
+                fontWeight: 700,
+                color: "#c8a44e",
+              }}
+            >
+              RU
+            </span>
+            法规更新动态
           </div>
           <div
             style={{
               background: "#fff",
-              borderRadius: 16,
-              border: "1px solid #f1f5f9",
-              boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
+              borderRadius: 8,
+              border: "1px solid #e8e4dc",
+              boxShadow: "0 1px 2px rgba(0,0,0,0.04)",
               overflow: "hidden",
             }}
           >
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "80px 72px 1fr",
+                padding: "10px 20px",
+                background: "#fafaf8",
+                borderBottom: "1px solid #e8e4dc",
+                fontSize: 10,
+                fontWeight: 600,
+                color: "#999",
+                textTransform: "uppercase",
+                letterSpacing: 0.5,
+              }}
+            >
+              <span>日期</span>
+              <span>类型</span>
+              <span>内容</span>
+            </div>
             {regUpdates.map((item, idx) => (
               <div
                 key={idx}
                 style={{
-                  display: "flex",
-                  alignItems: "flex-start",
-                  gap: 16,
-                  padding: "14px 20px",
-                  borderBottom: idx < regUpdates.length - 1 ? "1px solid #f8fafc" : "none",
+                  display: "grid",
+                  gridTemplateColumns: "80px 72px 1fr",
+                  alignItems: "center",
+                  padding: "12px 20px",
+                  borderBottom: idx < regUpdates.length - 1 ? "1px solid #e8e4dc" : "none",
                   transition: "background 0.2s",
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = "#faf5ff")}
+                onMouseEnter={(e) => (e.currentTarget.style.background = "#fafaf8")}
                 onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
               >
                 <span
                   style={{
                     fontSize: 12,
                     fontWeight: 600,
-                    color: "#64748b",
-                    whiteSpace: "nowrap",
-                    marginTop: 2,
+                    color: "#666",
                   }}
                 >
                   {item.date}
                 </span>
-                <span
-                  style={{
-                    padding: "2px 8px",
-                    borderRadius: 4,
-                    fontSize: 10,
-                    fontWeight: 600,
-                    background: item.urgent ? "#fef2f2" : "#f0fdf4",
-                    color: item.urgent ? "#dc2626" : "#16a34a",
-                    whiteSpace: "nowrap",
-                    marginTop: 2,
-                  }}
-                >
-                  {item.tag}
+                <span>
+                  <span
+                    style={{
+                      padding: "2px 8px",
+                      borderRadius: 3,
+                      fontSize: 10,
+                      fontWeight: 600,
+                      background: item.urgent ? "#fdf0ef" : item.tag === "新增" ? "#eef6f0" : "#fef9ef",
+                      color: item.urgent ? "#c0392b" : item.tag === "新增" ? "#2d7d46" : "#b8860b",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {item.tag}
+                  </span>
                 </span>
                 <span
                   style={{
                     fontSize: 13,
-                    color: "#334155",
+                    color: "#1a1a1a",
                     lineHeight: 1.6,
                   }}
                 >

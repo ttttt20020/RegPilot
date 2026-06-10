@@ -5,10 +5,10 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const navItems = [
-  { href: "/", label: "首页", icon: "" },
-  { href: "/check", label: "产品检查", icon: "" },
-  { href: "/regulations", label: "法规库", icon: "" },
-  { href: "/advisor", label: "AI 法规顾问", icon: "" },
+  { href: "/", label: "首页", icon: "R" },
+  { href: "/check", label: "产品检查", icon: "C" },
+  { href: "/regulations", label: "法规库", icon: "L" },
+  { href: "/advisor", label: "AI 顾问", icon: "A" },
 ];
 
 export default function SidebarLayout({ children }: { children: React.ReactNode }) {
@@ -26,156 +26,60 @@ export default function SidebarLayout({ children }: { children: React.ReactNode 
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Don't render layout structure until mounted to avoid hydration mismatch
   if (!mounted) {
-    return (
-      <div
-        style={{
-          display: "flex",
-          height: "100vh",
-          overflow: "hidden",
-          background: "#f8fafc",
-        }}
-      >
-        <div
-          style={{
-            width: 240,
-            flexShrink: 0,
-            display: "flex",
-            flexDirection: "column",
-            background: "linear-gradient(180deg, #0f172a 0%, #1e293b 100%)",
-            overflow: "hidden",
-          }}
-        >
-          <div style={{ padding: "24px 20px", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-              <div
-                style={{
-                  width: 36,
-                  height: 36,
-                  borderRadius: 10,
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
-                  boxShadow: "0 4px 12px rgba(99,102,241,0.3)",
-                  fontSize: 18,
-                }}
-              >
-                ✅
-              </div>
-              <div>
-                <div style={{ fontSize: 15, fontWeight: 700, color: "#fff" }}>RegPilot</div>
-                <div style={{ fontSize: 10, color: "#64748b", fontWeight: 500, letterSpacing: 1, textTransform: "uppercase" }}>智能合规引擎</div>
-              </div>
-            </div>
-          </div>
-
-          <nav style={{ flex: 1, padding: "20px 12px" }}>
-            <div style={{ padding: "0 12px", marginBottom: 12 }}>
-              <span style={{ fontSize: 10, fontWeight: 600, color: "#475569", textTransform: "uppercase", letterSpacing: 1.5 }}>导航菜单</span>
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
-              {navItems.map((item) => {
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 12,
-                      padding: "10px 12px",
-                      borderRadius: 12,
-                      fontSize: 13,
-                      fontWeight: 500,
-                      color: "#94a3b8",
-                      textDecoration: "none",
-                    }}
-                  >
-                    <span style={{ fontSize: 16, width: 20, textAlign: "center" }}>{item.icon}</span>
-                    <span>{item.label}</span>
-                  </Link>
-                );
-              })}
-            </div>
-          </nav>
-
-          <div style={{ padding: "16px 20px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-              <div style={{ width: 32, height: 32, borderRadius: "50%", background: "#1e293b", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>
-                👤
-              </div>
-              <div>
-                <div style={{ fontSize: 12, fontWeight: 500, color: "#cbd5e1" }}>RegPilot v1.0</div>
-                <div style={{ fontSize: 10, color: "#475569" }}>MVP 体验版</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div
-          style={{
-            flex: 1,
-            overflowY: "auto",
-            background: "#f8fafc",
-          }}
-        />
-      </div>
-    );
+    return <div style={{ minHeight: "100vh", background: "#fafaf8" }} />;
   }
 
   return (
     <div
       style={{
         display: "flex",
-        height: "100vh",
-        overflow: "hidden",
-        background: "#f8fafc",
+        minHeight: "100vh",
+        background: "#fafaf8",
         position: "relative",
       }}
     >
-      {/* Desktop Sidebar - only render on non-mobile */}
+      {/* Desktop Sidebar */}
       {!isMobile && (
         <aside
           style={{
-            width: 240,
+            width: 220,
             flexShrink: 0,
             display: "flex",
             flexDirection: "column",
-            background: "linear-gradient(180deg, #0f172a 0%, #1e293b 100%)",
+            background: "#1a1a1a",
             overflow: "hidden",
+            borderRight: "1px solid #2a2a2a",
           }}
         >
-          <div style={{ padding: "24px 20px", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+          <div style={{ padding: "28px 20px 24px", borderBottom: "1px solid #2a2a2a" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
               <div
                 style={{
-                  width: 36,
-                  height: 36,
-                  borderRadius: 10,
+                  width: 32,
+                  height: 32,
+                  borderRadius: 8,
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
-                  background: "linear-gradient(135deg, #6366f1, #8b5cf6)",
-                  boxShadow: "0 4px 12px rgba(99,102,241,0.3)",
-                  fontSize: 18,
+                  background: "#c8a44e",
+                  color: "#1a1a1a",
+                  fontSize: 14,
+                  fontWeight: 800,
+                  letterSpacing: "-0.5px",
                 }}
               >
-                ✅
+                R
               </div>
               <div>
-                <div style={{ fontSize: 15, fontWeight: 700, color: "#fff" }}>RegPilot</div>
-                <div style={{ fontSize: 10, color: "#64748b", fontWeight: 500, letterSpacing: 1, textTransform: "uppercase" }}>智能合规引擎</div>
+                <div style={{ fontSize: 14, fontWeight: 700, color: "#e8e4dc", letterSpacing: "-0.3px" }}>RegPilot</div>
+                <div style={{ fontSize: 9, color: "#666", fontWeight: 500, letterSpacing: 1.5, textTransform: "uppercase" }}>Compliance</div>
               </div>
             </div>
           </div>
 
-          <nav style={{ flex: 1, padding: "20px 12px" }}>
-            <div style={{ padding: "0 12px", marginBottom: 12 }}>
-              <span style={{ fontSize: 10, fontWeight: 600, color: "#475569", textTransform: "uppercase", letterSpacing: 1.5 }}>导航菜单</span>
-            </div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
+          <nav style={{ flex: 1, padding: "16px 10px" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
               {navItems.map((item) => {
                 const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
                 return (
@@ -185,19 +89,34 @@ export default function SidebarLayout({ children }: { children: React.ReactNode 
                     style={{
                       display: "flex",
                       alignItems: "center",
-                      gap: 12,
-                      padding: "10px 12px",
-                      borderRadius: 12,
+                      gap: 10,
+                      padding: "9px 12px",
+                      borderRadius: 8,
                       fontSize: 13,
-                      fontWeight: 500,
-                      color: isActive ? "#fff" : "#94a3b8",
-                      background: isActive ? "linear-gradient(135deg, #6366f1, #8b5cf6)" : "transparent",
-                      boxShadow: isActive ? "0 4px 12px rgba(99,102,241,0.25)" : "none",
+                      fontWeight: isActive ? 600 : 400,
+                      color: isActive ? "#c8a44e" : "#888",
+                      background: isActive ? "rgba(200,164,78,0.08)" : "transparent",
                       textDecoration: "none",
-                      transition: "all 0.2s",
+                      transition: "all 0.15s",
+                      borderLeft: isActive ? "2px solid #c8a44e" : "2px solid transparent",
                     }}
                   >
-                    <span style={{ fontSize: 16, width: 20, textAlign: "center" }}>{item.icon}</span>
+                    <span
+                      style={{
+                        width: 22,
+                        height: 22,
+                        borderRadius: 5,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        fontSize: 11,
+                        fontWeight: 700,
+                        color: isActive ? "#1a1a1a" : "#666",
+                        background: isActive ? "#c8a44e" : "#2a2a2a",
+                      }}
+                    >
+                      {item.icon}
+                    </span>
                     <span>{item.label}</span>
                   </Link>
                 );
@@ -205,16 +124,8 @@ export default function SidebarLayout({ children }: { children: React.ReactNode 
             </div>
           </nav>
 
-          <div style={{ padding: "16px 20px", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-              <div style={{ width: 32, height: 32, borderRadius: "50%", background: "#1e293b", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14 }}>
-                👤
-              </div>
-              <div>
-                <div style={{ fontSize: 12, fontWeight: 500, color: "#cbd5e1" }}>RegPilot v1.0</div>
-                <div style={{ fontSize: 10, color: "#475569" }}>MVP 体验版</div>
-              </div>
-            </div>
+          <div style={{ padding: "16px 20px", borderTop: "1px solid #2a2a2a" }}>
+            <div style={{ fontSize: 10, color: "#444", fontWeight: 500 }}>v1.0 MVP</div>
           </div>
         </aside>
       )}
@@ -224,16 +135,14 @@ export default function SidebarLayout({ children }: { children: React.ReactNode 
         style={{
           flex: 1,
           overflowY: "auto",
-          background: isMobile
-            ? "#fff"
-            : "radial-gradient(at 20% 80%, rgba(99,102,241,0.06) 0%, transparent 50%), radial-gradient(at 80% 20%, rgba(139,92,246,0.04) 0%, transparent 50%), #f8fafc",
-          paddingBottom: isMobile ? "72px" : "0",
+          background: "#fafaf8",
+          paddingBottom: isMobile ? 64 : 0,
         }}
       >
         {children}
       </main>
 
-      {/* Mobile Bottom Navigation - only render on mobile */}
+      {/* Mobile Bottom Navigation */}
       {isMobile && (
         <nav
           style={{
@@ -241,12 +150,11 @@ export default function SidebarLayout({ children }: { children: React.ReactNode 
             bottom: 0,
             left: 0,
             right: 0,
-            background: "#fff",
-            borderTop: "1px solid #e2e8f0",
-            padding: "6px 0",
-            paddingBottom: "calc(6px + env(safe-area-inset-bottom, 0px))",
+            background: "#1a1a1a",
+            borderTop: "1px solid #2a2a2a",
+            padding: "4px 0",
+            paddingBottom: "calc(4px + env(safe-area-inset-bottom, 0px))",
             zIndex: 1000,
-            boxShadow: "0 -2px 10px rgba(0,0,0,0.05)",
           }}
         >
           <div style={{ display: "flex", justifyContent: "space-around", alignItems: "center" }}>
@@ -261,17 +169,31 @@ export default function SidebarLayout({ children }: { children: React.ReactNode 
                     flexDirection: "column",
                     alignItems: "center",
                     gap: 2,
-                    padding: "4px 8px",
-                    fontSize: 10,
-                    fontWeight: isActive ? 700 : 500,
-                    color: isActive ? "#6366f1" : "#64748b",
+                    padding: "4px 10px",
+                    fontSize: 9,
+                    fontWeight: isActive ? 700 : 400,
+                    color: isActive ? "#c8a44e" : "#666",
                     textDecoration: "none",
-                    transition: "all 0.2s",
-                    minWidth: 0,
+                    transition: "all 0.15s",
                   }}
                 >
-                  <span style={{ fontSize: 20 }}>{item.icon}</span>
-                  <span style={{ whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", maxWidth: "60px" }}>{item.label}</span>
+                  <span
+                    style={{
+                      width: 24,
+                      height: 24,
+                      borderRadius: 5,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      fontSize: 11,
+                      fontWeight: 700,
+                      color: isActive ? "#1a1a1a" : "#666",
+                      background: isActive ? "#c8a44e" : "#2a2a2a",
+                    }}
+                  >
+                    {item.icon}
+                  </span>
+                  <span>{item.label}</span>
                 </Link>
               );
             })}

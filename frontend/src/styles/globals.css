@@ -1,17 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary-50: #eef2ff;
-  --color-primary-100: #e0e7ff;
-  --color-primary-200: #c7d2fe;
-  --color-primary-300: #a5b4fc;
-  --color-primary-400: #818cf8;
-  --color-primary-500: #6366f1;
-  --color-primary-600: #4f46e5;
-  --color-primary-700: #4338ca;
-  --color-primary-800: #3730a3;
-  --color-primary-900: #312e81;
-  --color-surface: #f8fafc;
+  --color-primary-50: #faf8f0;
+  --color-primary-100: #f0efe8;
+  --color-primary-200: #e8e4dc;
+  --color-primary-300: #d4cfc4;
+  --color-primary-400: #c8a44e;
+  --color-primary-500: #b8943e;
+  --color-primary-600: #a0832e;
+  --color-primary-700: #886e24;
+  --color-primary-800: #1a1a1a;
+  --color-primary-900: #0d0d0d;
+  --color-surface: #fafaf8;
 }
 
 * {
@@ -21,8 +21,8 @@
 
 html {
   font-family: "DM Sans", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
-  background: #f8fafc;
-  color: #1e293b;
+  background: #fafaf8;
+  color: #1a1a1a;
 }
 
 body {
@@ -30,12 +30,12 @@ body {
 }
 
 ::selection {
-  background: #c7d2fe;
-  color: #312e81;
+  background: #e8e4dc;
+  color: #1a1a1a;
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -43,12 +43,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
+  background: #d4cfc4;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #b0a998;
 }
 
 @keyframes fadeIn {
@@ -57,13 +57,8 @@ body {
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(16px); }
+  from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
 }
 
 @keyframes scaleIn {
@@ -86,17 +81,7 @@ body {
   50% { transform: none; animation-timing-function: cubic-bezier(0,0,0.2,1); }
 }
 
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-.animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
-.animate-slide-up { animation: slideUp 0.4s ease-out forwards; }
+.animate-fade-in { animation: fadeIn 0.4s ease-out forwards; }
+.animate-slide-up { animation: slideUp 0.35s ease-out forwards; }
 .animate-scale-in { animation: scaleIn 0.2s ease-out forwards; }
-.animate-shimmer {
-  background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
-  background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
-}
 .animate-pulse-soft { animation: pulse-soft 2s ease-in-out infinite; }

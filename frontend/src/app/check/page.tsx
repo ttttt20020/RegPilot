@@ -27,25 +27,25 @@ const FILE_SLOTS = [
   { key: "images", label: "产品图片/标签", accept: ".png,.jpg,.jpeg,.pdf", desc: "产品外观、警示标签图片", required: false, multiple: true },
 ];
 
-const FLAG_EMOJIS: Record<string, string> = {
-  us: "🇺🇸",
-  eu: "🇪🇺",
-  ca: "🇨🇦",
-  gb: "🇬🇧",
-  au: "🇦🇺",
+const FLAG_ABBR: Record<string, string> = {
+  us: "US",
+  eu: "EU",
+  ca: "CA",
+  gb: "UK",
+  au: "AU",
 };
 
-const PRODUCT_EMOJIS: Record<string, string> = {
-  Kids_Bicycle: "🚲",
-  Bicycle: "🚲",
-  "E-bike": "⚡",
+const PRODUCT_ABBR: Record<string, string> = {
+  Kids_Bicycle: "KB",
+  Bicycle: "BK",
+  "E-bike": "EB",
 };
 
-const FILE_EMOJIS: Record<string, string> = {
-  bom: "📋",
-  spec: "📄",
-  description: "📝",
-  images: "🖼️",
+const FILE_ABBR: Record<string, string> = {
+  bom: "BM",
+  spec: "SP",
+  description: "DC",
+  images: "IM",
 };
 
 export default function CheckPage() {
@@ -131,22 +131,26 @@ export default function CheckPage() {
 
   return (
     <SidebarLayout>
-      <div style={{ padding: "32px 32px 64px" }}>
+      <div style={{ padding: "32px 32px 64px", background: "#fafaf8", minHeight: "100vh" }}>
         <div style={{ marginBottom: 32, animation: "slideUp 0.4s ease-out forwards" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
-            <div style={{ width: 8, height: 32, borderRadius: 9999, background: "linear-gradient(135deg, #6366f1, #8b5cf6)" }} />
-            <h2 style={{ fontSize: 24, fontWeight: 700, color: "#0f172a", letterSpacing: "-0.025em" }}>产品检查</h2>
+            <div style={{ width: 8, height: 32, borderRadius: 2, background: "#c8a44e" }} />
+            <h2 style={{ fontSize: 24, fontWeight: 700, color: "#1a1a1a", letterSpacing: "-0.025em" }}>产品检查</h2>
           </div>
-          <p style={{ color: "#94a3b8", marginLeft: 20 }}>上传产品资料，AI 自动进行法规合规分析</p>
+          <p style={{ color: "#999", marginLeft: 20 }}>上传产品资料，AI 自动进行法规合规分析</p>
         </div>
 
         {error && (
-          <div style={{ marginBottom: 24, padding: "12px 20px", borderRadius: 16, fontSize: 14, display: "flex", alignItems: "center", justifyContent: "space-between", animation: "slideUp 0.4s ease-out forwards", background: "#fef2f2", color: "#991b1b", border: "1px solid #fca5a5" }}>
+          <div style={{ marginBottom: 24, padding: "12px 20px", borderRadius: 8, fontSize: 14, display: "flex", alignItems: "center", justifyContent: "space-between", animation: "slideUp 0.4s ease-out forwards", background: "#fdf2f2", color: "#c0392b", border: "1px solid #e8b4b4" }}>
             <span style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              <span style={{ fontSize: 16 }}>⚠️</span>
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <circle cx="8" cy="8" r="7" stroke="#c0392b" strokeWidth="1.5" />
+                <line x1="8" y1="4" x2="8" y2="9" stroke="#c0392b" strokeWidth="1.5" strokeLinecap="round" />
+                <circle cx="8" cy="11.5" r="0.75" fill="#c0392b" />
+              </svg>
               {error}
             </span>
-            <button onClick={() => setError(null)} style={{ background: "none", border: "none", cursor: "pointer", fontSize: 14, color: "#f87171" }}>
+            <button onClick={() => setError(null)} style={{ background: "none", border: "none", cursor: "pointer", fontSize: 14, color: "#c0392b" }}>
               ✕
             </button>
           </div>
@@ -161,24 +165,24 @@ export default function CheckPage() {
                     style={{
                       position: "relative", width: 36, height: 36, borderRadius: 9999, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, fontWeight: 700,
                       ...(step.done
-                        ? { color: "#fff", background: "linear-gradient(135deg, #6366f1, #8b5cf6)", boxShadow: "0 10px 15px -3px rgba(99,102,241,0.25), 0 4px 6px -4px rgba(99,102,241,0.25)" }
+                        ? { color: "#fff", background: "#c8a44e", boxShadow: "0 2px 4px rgba(200,164,78,0.25)" }
                         : step.active
-                          ? { background: "#e0e7ff", color: "#4f46e5", boxShadow: "0 0 0 2px #c7d2fe" }
-                          : { background: "#f1f5f9", color: "#94a3b8" }),
+                          ? { background: "#f5f0e6", color: "#c8a44e", border: "2px solid #e8e4dc" }
+                          : { background: "#f0ede6", color: "#999" }),
                     }}
                   >
                     {step.done ? "✓" : <span>{i + 1}</span>}
                   </div>
                   <span style={{
                     fontSize: 12, fontWeight: 600, whiteSpace: "nowrap",
-                    color: step.done ? "#4f46e5" : step.active ? "#475569" : "#94a3b8",
+                    color: step.done ? "#c8a44e" : step.active ? "#666" : "#999",
                   }}>
                     {step.label}
                   </span>
                 </div>
                 {i < steps.length - 1 && (
                   <div
-                    style={{ flex: 1, height: 2, margin: "0 16px", borderRadius: 9999, ...(step.done ? { background: "linear-gradient(135deg, #6366f1, #8b5cf6)" } : { background: "#e2e8f0" }) }}
+                    style={{ flex: 1, height: 2, margin: "0 16px", borderRadius: 9999, ...(step.done ? { background: "#c8a44e" } : { background: "#e8e4dc" }) }}
                   />
                 )}
               </div>
@@ -189,8 +193,8 @@ export default function CheckPage() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24, marginBottom: 32 }}>
           <div style={{ animation: "slideUp 0.4s ease-out forwards", animationDelay: "0.1s" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
-              <div style={{ width: 4, height: 20, borderRadius: 9999, background: "linear-gradient(135deg, #6366f1, #8b5cf6)" }} />
-              <span style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 18, fontWeight: 700, color: "#0f172a" }}>目标市场</span>
+              <div style={{ width: 4, height: 20, borderRadius: 2, background: "#c8a44e" }} />
+              <span style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 18, fontWeight: 700, color: "#1a1a1a" }}>目标市场</span>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               {COUNTRIES.map((c) => (
@@ -199,43 +203,43 @@ export default function CheckPage() {
                   disabled={c.disabled}
                   onClick={() => setCountry(c.value)}
                   style={{
-                    width: "100%", textAlign: "left", padding: "14px 16px", borderRadius: 16, border: "1px solid",
+                    width: "100%", textAlign: "left", padding: "14px 16px", borderRadius: 8, border: "none",
                     ...(c.disabled
-                      ? { borderColor: "#f1f5f9", background: "rgba(248,250,252,0.5)", cursor: "not-allowed", opacity: 0.5 }
+                      ? { background: "#f5f3ee", cursor: "not-allowed", opacity: 0.5 }
                       : country === c.value
-                        ? { background: "rgba(255,255,255,0.8)", backdropFilter: "blur(4px)", borderColor: "#a5b4fc", boxShadow: "0 0 0 2px #e0e7ff, 0 10px 15px -3px rgba(99,102,241,0.05), 0 4px 6px -4px rgba(99,102,241,0.05)" }
-                        : { background: "rgba(255,255,255,0.8)", backdropFilter: "blur(4px)", borderColor: "rgba(226,232,240,0.8)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }),
+                        ? { background: "#fff", borderLeft: "3px solid #c8a44e", boxShadow: "0 1px 2px rgba(0,0,0,0.04)", border: "1px solid #e8e4dc", borderLeft: "3px solid #c8a44e" }
+                        : { background: "#fff", boxShadow: "0 1px 2px rgba(0,0,0,0.04)", border: "1px solid #e8e4dc" }),
                   }}
                 >
                   <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                     <div
                       style={{
-                        width: 40, height: 40, borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22,
+                        width: 40, height: 40, borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700, letterSpacing: "0.5px",
                         ...(c.disabled
-                          ? { background: "#f1f5f9" }
+                          ? { background: "#f0ede6", color: "#999" }
                           : country === c.value
-                            ? { background: "linear-gradient(135deg, #6366f1, #8b5cf6)", boxShadow: "0 4px 6px -1px rgba(99,102,241,0.2), 0 2px 4px -2px rgba(99,102,241,0.2)" }
-                            : { background: "#eef2ff" }),
+                            ? { background: "#c8a44e", color: "#fff", boxShadow: "0 2px 4px rgba(200,164,78,0.2)" }
+                            : { background: "#f5f0e6", color: "#c8a44e" }),
                       }}
                     >
-                      {FLAG_EMOJIS[c.flag]}
+                      {FLAG_ABBR[c.flag]}
                     </div>
                     <div style={{ flex: 1, minWidth: 0 }}>
                       <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
                         <span style={{
                           fontSize: 14, fontWeight: 600,
-                          color: c.disabled ? "#94a3b8" : country === c.value ? "#4338ca" : "#334155",
+                          color: c.disabled ? "#999" : country === c.value ? "#1a1a1a" : "#666",
                         }}>
                           {c.label}
                         </span>
                         {c.disabled && (
-                          <span style={{ padding: "2px 6px", borderRadius: 6, fontSize: 9, fontWeight: 600, background: "#fefce8", color: "#854d0e", border: "1px solid #fde047" }}>即将推出</span>
+                          <span style={{ padding: "2px 6px", borderRadius: 4, fontSize: 9, fontWeight: 600, background: "#fdf6e3", color: "#b8860b", border: "1px solid #e8dcc8" }}>即将推出</span>
                         )}
                         {!c.disabled && country === c.value && (
-                          <span style={{ fontSize: 14, color: "#6366f1" }}>✓</span>
+                          <span style={{ fontSize: 14, color: "#c8a44e", fontWeight: 700 }}>✓</span>
                         )}
                       </div>
-                      <div style={{ fontSize: 11, color: "#94a3b8", marginTop: 2, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{c.desc}</div>
+                      <div style={{ fontSize: 11, color: "#999", marginTop: 2, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{c.desc}</div>
                     </div>
                   </div>
                 </button>
@@ -245,10 +249,10 @@ export default function CheckPage() {
 
           <div style={{ animation: "slideUp 0.4s ease-out forwards", animationDelay: "0.15s" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
-              <div style={{ width: 4, height: 20, borderRadius: 9999, background: "linear-gradient(135deg, #6366f1, #8b5cf6)" }} />
-              <span style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 18, fontWeight: 700, color: "#0f172a" }}>
+              <div style={{ width: 4, height: 20, borderRadius: 2, background: "#c8a44e" }} />
+              <span style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 18, fontWeight: 700, color: "#1a1a1a" }}>
                 产品类型
-                {!productType && <span style={{ color: "#f87171", marginLeft: 2 }}>*</span>}
+                {!productType && <span style={{ color: "#c0392b", marginLeft: 2 }}>*</span>}
               </span>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
@@ -259,35 +263,35 @@ export default function CheckPage() {
                     key={p.value}
                     onClick={() => setProductType(p.value)}
                     style={{
-                      width: "100%", textAlign: "left", padding: 16, borderRadius: 16, border: "1px solid",
+                      width: "100%", textAlign: "left", padding: 16, borderRadius: 8,
                       ...(selected
-                        ? { background: "rgba(255,255,255,0.8)", backdropFilter: "blur(4px)", borderColor: "#a5b4fc", boxShadow: "0 0 0 2px #e0e7ff, 0 10px 15px -3px rgba(99,102,241,0.05), 0 4px 6px -4px rgba(99,102,241,0.05)" }
-                        : { background: "rgba(255,255,255,0.8)", backdropFilter: "blur(4px)", borderColor: "rgba(226,232,240,0.8)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)" }),
+                        ? { background: "#fff", border: "1px solid #e8e4dc", borderLeft: "3px solid #c8a44e", boxShadow: "0 1px 2px rgba(0,0,0,0.04)" }
+                        : { background: "#fff", border: "1px solid #e8e4dc", boxShadow: "0 1px 2px rgba(0,0,0,0.04)" }),
                     }}
                   >
                     <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
                       <div
                         style={{
-                          width: 40, height: 40, borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22,
+                          width: 40, height: 40, borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 13, fontWeight: 700, letterSpacing: "0.5px",
                           ...(selected
-                            ? { background: "linear-gradient(135deg, #6366f1, #8b5cf6)", boxShadow: "0 4px 6px -1px rgba(99,102,241,0.2), 0 2px 4px -2px rgba(99,102,241,0.2)" }
-                            : { background: "#eef2ff", color: "#6366f1" }),
+                            ? { background: "#c8a44e", color: "#fff", boxShadow: "0 2px 4px rgba(200,164,78,0.2)" }
+                            : { background: "#f5f0e6", color: "#c8a44e" }),
                         }}
                       >
-                        {PRODUCT_EMOJIS[p.value]}
+                        {PRODUCT_ABBR[p.value]}
                       </div>
                       <div style={{ flex: 1, minWidth: 0 }}>
                         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                          <span style={{ fontSize: 14, fontWeight: 600, color: selected ? "#4338ca" : "#334155" }}>
+                          <span style={{ fontSize: 14, fontWeight: 600, color: selected ? "#1a1a1a" : "#666" }}>
                             {p.label}
                           </span>
                           {selected && (
-                            <div style={{ width: 20, height: 20, borderRadius: 9999, display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg, #6366f1, #8b5cf6)", animation: "scaleIn 0.2s ease-out", color: "#fff", fontSize: 12, fontWeight: 700 }}>
+                            <div style={{ width: 20, height: 20, borderRadius: 9999, display: "flex", alignItems: "center", justifyContent: "center", background: "#c8a44e", animation: "scaleIn 0.2s ease-out", color: "#fff", fontSize: 12, fontWeight: 700 }}>
                               ✓
                             </div>
                           )}
                         </div>
-                        <div style={{ fontSize: 11, color: "#94a3b8", marginTop: 2 }}>{p.desc}</div>
+                        <div style={{ fontSize: 11, color: "#999", marginTop: 2 }}>{p.desc}</div>
                       </div>
                     </div>
                   </button>
@@ -298,10 +302,10 @@ export default function CheckPage() {
 
           <div style={{ animation: "slideUp 0.4s ease-out forwards", animationDelay: "0.2s" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
-              <div style={{ width: 4, height: 20, borderRadius: 9999, background: "linear-gradient(135deg, #6366f1, #8b5cf6)" }} />
-              <span style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 18, fontWeight: 700, color: "#0f172a" }}>
+              <div style={{ width: 4, height: 20, borderRadius: 2, background: "#c8a44e" }} />
+              <span style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 18, fontWeight: 700, color: "#1a1a1a" }}>
                 产品资料
-                {!hasBom && <span style={{ color: "#f87171", marginLeft: 2 }}>*</span>}
+                {!hasBom && <span style={{ color: "#c0392b", marginLeft: 2 }}>*</span>}
               </span>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
@@ -312,12 +316,12 @@ export default function CheckPage() {
                   <div
                     key={slot.key}
                     style={{
-                      position: "relative", borderRadius: 16, border: "2px dashed", padding: 16,
+                      position: "relative", borderRadius: 8, border: "2px dashed", padding: 16,
                       ...(filled
-                        ? { borderColor: "#6ee7b7", background: "rgba(236,253,245,0.4)" }
+                        ? { borderColor: "#2d7d46", background: "#f6faf7" }
                         : slot.required
-                          ? { borderColor: "#fde68a", background: "rgba(255,251,235,0.2)" }
-                          : { borderColor: "#e2e8f0", background: "rgba(255,255,255,0.6)" }),
+                          ? { borderColor: "#e8e4dc", background: "#fffcf5" }
+                          : { borderColor: "#e8e4dc", background: "#fff" }),
                     }}
                   >
                     <input
@@ -331,21 +335,25 @@ export default function CheckPage() {
                     {filled ? (
                       <div>
                         <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
-                          <div style={{ width: 32, height: 32, borderRadius: 8, background: "#d1fae5", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16 }}>
-                            {FILE_EMOJIS[slot.key]}
+                          <div style={{ width: 32, height: 32, borderRadius: 6, background: "#e6f2ea", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 700, color: "#2d7d46" }}>
+                            {FILE_ABBR[slot.key]}
                           </div>
-                          <span style={{ fontSize: 14, fontWeight: 600, color: "#047857" }}>{slot.label}</span>
-                          <span style={{ fontSize: 14, color: "#10b981", marginLeft: "auto" }}>✓</span>
+                          <span style={{ fontSize: 14, fontWeight: 600, color: "#2d7d46" }}>{slot.label}</span>
+                          <span style={{ fontSize: 14, color: "#2d7d46", marginLeft: "auto", fontWeight: 700 }}>✓</span>
                         </div>
                         {slotFiles.map((f, i) => (
                           <div key={i} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginLeft: 42, marginTop: 6 }}>
                             <div style={{ display: "flex", alignItems: "center", gap: 6, minWidth: 0 }}>
-                              <span style={{ fontSize: 12, color: "#94a3b8", flexShrink: 0 }}>📄</span>
-                              <span style={{ fontSize: 12, color: "#64748b", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{f.name}</span>
+                              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ flexShrink: 0 }}>
+                                <rect x="1" y="1" width="10" height="12" rx="1" stroke="#999" strokeWidth="1" fill="none" />
+                                <line x1="3.5" y1="4" x2="8.5" y2="4" stroke="#999" strokeWidth="0.75" />
+                                <line x1="3.5" y1="6" x2="7" y2="6" stroke="#999" strokeWidth="0.75" />
+                              </svg>
+                              <span style={{ fontSize: 12, color: "#666", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{f.name}</span>
                             </div>
                             <button
                               onClick={() => handleRemoveFile(slot.key, i)}
-                              style={{ color: "#cbd5e1", background: "none", border: "none", cursor: "pointer", marginLeft: 8, flexShrink: 0, fontSize: 14 }}
+                              style={{ color: "#999", background: "none", border: "none", cursor: "pointer", marginLeft: 8, flexShrink: 0, fontSize: 14 }}
                             >
                               ✕
                             </button>
@@ -353,7 +361,7 @@ export default function CheckPage() {
                         ))}
                         <button
                           onClick={() => fileInputRefs.current[slot.key]?.click()}
-                          style={{ marginLeft: 42, marginTop: 8, fontSize: 12, fontWeight: 500, color: "#6366f1", background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center", gap: 4 }}
+                          style={{ marginLeft: 42, marginTop: 8, fontSize: 12, fontWeight: 500, color: "#c8a44e", background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center", gap: 4 }}
                         >
                           + {slot.multiple ? "添加更多" : "重新选择"}
                         </button>
@@ -364,19 +372,22 @@ export default function CheckPage() {
                         style={{ width: "100%", textAlign: "left", display: "flex", alignItems: "center", gap: 12, background: "none", border: "none", cursor: "pointer", padding: 0 }}
                       >
                         <div style={{
-                          width: 32, height: 32, borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 16,
-                          ...(slot.required ? { background: "#fef3c7", color: "#f59e0b" } : { background: "#f1f5f9", color: "#94a3b8" }),
+                          width: 32, height: 32, borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 700,
+                          ...(slot.required ? { background: "#fdf6e3", color: "#b8860b" } : { background: "#f5f0e6", color: "#999" }),
                         }}>
-                          {FILE_EMOJIS[slot.key]}
+                          {FILE_ABBR[slot.key]}
                         </div>
                         <div style={{ flex: 1, minWidth: 0 }}>
-                          <div style={{ fontSize: 14, fontWeight: 500, color: "#334155" }}>
+                          <div style={{ fontSize: 14, fontWeight: 500, color: "#1a1a1a" }}>
                             {slot.label}
-                            {slot.required && <span style={{ color: "#f87171", marginLeft: 4 }}>*</span>}
+                            {slot.required && <span style={{ color: "#c0392b", marginLeft: 4 }}>*</span>}
                           </div>
-                          <div style={{ fontSize: 11, color: "#94a3b8", marginTop: 2 }}>{slot.desc}</div>
+                          <div style={{ fontSize: 11, color: "#999", marginTop: 2 }}>{slot.desc}</div>
                         </div>
-                        <span style={{ fontSize: 20, color: "#cbd5e1" }}>⬆️</span>
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0 }}>
+                          <path d="M8 2v8M4 6l4-4 4 4" stroke="#999" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                          <path d="M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2" stroke="#999" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
                       </button>
                     )}
                   </div>
@@ -384,8 +395,12 @@ export default function CheckPage() {
               })}
             </div>
             {totalFiles > 0 && (
-              <div style={{ marginTop: 12, display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#94a3b8" }}>
-                <span style={{ fontSize: 14 }}>📄</span>
+              <div style={{ marginTop: 12, display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#999" }}>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <rect x="1" y="2" width="12" height="10" rx="1.5" stroke="#999" strokeWidth="1" fill="none" />
+                  <line x1="4" y1="5" x2="10" y2="5" stroke="#999" strokeWidth="0.75" />
+                  <line x1="4" y1="7.5" x2="8" y2="7.5" stroke="#999" strokeWidth="0.75" />
+                </svg>
                 已选择 {totalFiles} 个文件
               </div>
             )}
@@ -394,23 +409,21 @@ export default function CheckPage() {
 
         {uploading && (
           <div style={{ marginBottom: 32, animation: "slideUp 0.4s ease-out forwards" }}>
-            <div style={{ background: "rgba(255,255,255,0.8)", backdropFilter: "blur(4px)", border: "1px solid rgba(255,255,255,0.6)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", borderRadius: 16, padding: 24 }}>
+            <div style={{ background: "#fff", border: "1px solid #e8e4dc", boxShadow: "0 1px 2px rgba(0,0,0,0.04)", borderRadius: 8, padding: 24 }}>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
-                <span style={{ fontSize: 14, fontWeight: 500, color: "#475569", display: "flex", alignItems: "center", gap: 8 }}>
-                  <svg width="16" height="16" viewBox="0 0 24 24" style={{ animation: "spin 1s linear infinite", color: "#6366f1" }}>
+                <span style={{ fontSize: 14, fontWeight: 500, color: "#666", display: "flex", alignItems: "center", gap: 8 }}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" style={{ animation: "spin 1s linear infinite", color: "#c8a44e" }}>
                     <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" style={{ opacity: 0.25 }} />
                     <path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" style={{ opacity: 0.75 }} />
                   </svg>
                   {progress < 40 ? "正在上传文件..." : progress < 70 ? "正在解析 BOM 数据..." : progress < 90 ? "正在进行法规匹配与风险评估..." : "分析完成，即将跳转..."}
                 </span>
-                <span style={{ fontSize: 14, fontWeight: 700, color: "#4f46e5" }}>{progress}%</span>
+                <span style={{ fontSize: 14, fontWeight: 700, color: "#c8a44e" }}>{progress}%</span>
               </div>
-              <div style={{ width: "100%", background: "#f1f5f9", borderRadius: 9999, height: 10, overflow: "hidden" }}>
+              <div style={{ width: "100%", background: "#f0ede6", borderRadius: 9999, height: 10, overflow: "hidden" }}>
                 <div
-                  style={{ height: 10, borderRadius: 9999, width: `${progress}%`, background: "linear-gradient(135deg, #6366f1, #8b5cf6)", position: "relative" }}
-                >
-                  <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent)", backgroundSize: "200% 100%", animation: "shimmer 1.5s infinite" }} />
-                </div>
+                  style={{ height: 10, borderRadius: 9999, width: `${progress}%`, background: "#c8a44e", transition: "width 0.3s ease" }}
+                />
               </div>
             </div>
           </div>
@@ -421,8 +434,8 @@ export default function CheckPage() {
             onClick={handleSubmit}
             disabled={!canSubmit}
             style={{
-              display: "inline-flex", alignItems: "center", gap: 10, fontSize: 16, padding: "14px 48px", color: "#fff", fontWeight: 600, borderRadius: 16, border: "none", cursor: canSubmit ? "pointer" : "not-allowed",
-              background: "linear-gradient(135deg, #6366f1, #4f46e5)", boxShadow: "0 4px 12px rgba(79,70,229,0.3)",
+              display: "inline-flex", alignItems: "center", gap: 10, fontSize: 16, padding: "14px 48px", color: "#1a1a1a", fontWeight: 600, borderRadius: 8, border: "none", cursor: canSubmit ? "pointer" : "not-allowed",
+              background: "#c8a44e",
               opacity: canSubmit ? 1 : 0.5,
             }}
           >
@@ -436,14 +449,21 @@ export default function CheckPage() {
               </>
             ) : (
               <>
-                <span style={{ fontSize: 20 }}>🔬</span>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <circle cx="10" cy="10" r="8" stroke="#1a1a1a" strokeWidth="1.5" fill="none" />
+                  <path d="M10 6v4l3 2" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
                 开始合规分析
               </>
             )}
           </button>
           {!canSubmit && !uploading && (
-            <span style={{ fontSize: 14, color: "#94a3b8", display: "flex", alignItems: "center", gap: 6 }}>
-              <span style={{ fontSize: 16 }}>ℹ️</span>
+            <span style={{ fontSize: 14, color: "#999", display: "flex", alignItems: "center", gap: 6 }}>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <circle cx="7" cy="7" r="6" stroke="#999" strokeWidth="1.2" fill="none" />
+                <line x1="7" y1="4" x2="7" y2="7.5" stroke="#999" strokeWidth="1.2" strokeLinecap="round" />
+                <circle cx="7" cy="9.5" r="0.6" fill="#999" />
+              </svg>
               {!hasBom ? "请上传 BOM 物料清单" : !productType ? "请选择产品类型" : ""}
             </span>
           )}

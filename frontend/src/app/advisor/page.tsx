@@ -100,21 +100,17 @@ export default function AdvisorPage() {
 
   return (
     <SidebarLayout>
-      <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
-        <div style={{ padding: "24px 32px", flexShrink: 0, position: "relative", overflow: "hidden" }}>
-          <div style={{ position: "absolute", inset: 0, background: "radial-gradient(at 20% 80%, rgba(99,102,241,0.06) 0, transparent 50%), radial-gradient(at 80% 20%, rgba(139,92,246,0.06) 0, transparent 50%)" }} />
-          <div style={{ position: "relative" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
-              <div style={{ width: 4, height: 32, borderRadius: 9999, background: "linear-gradient(135deg, #6366f1, #8b5cf6)" }} />
-              <h2 style={{ fontSize: 24, fontWeight: 700, color: "#0f172a", letterSpacing: "-0.025em" }}>
-                AI 法规顾问
-              </h2>
-              <span style={{ fontSize: 20 }}>✨</span>
-            </div>
-            <p style={{ color: "#64748b", fontSize: 14, marginLeft: 16, paddingLeft: 4 }}>
-              智谱AI驱动 · 67条法规规则 · 智能推理
-            </p>
+      <div style={{ display: "flex", flexDirection: "column", height: "100%", background: "#fafaf8" }}>
+        <div style={{ padding: "24px 32px", flexShrink: 0 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
+            <div style={{ width: 4, height: 32, borderRadius: 9999, background: "#c8a44e" }} />
+            <h2 style={{ fontSize: 24, fontWeight: 700, color: "#1a1a1a", letterSpacing: "-0.025em" }}>
+              AI 法规顾问
+            </h2>
           </div>
+          <p style={{ color: "#666", fontSize: 14, marginLeft: 16, paddingLeft: 4 }}>
+            智谱AI驱动 · 67条法规规则 · 智能推理
+          </p>
         </div>
 
         <div
@@ -132,8 +128,8 @@ export default function AdvisorPage() {
             >
               {msg.role === "assistant" && (
                 <div style={{ flexShrink: 0, marginTop: 4 }}>
-                  <div style={{ width: 32, height: 32, borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg, #6366f1, #8b5cf6)", boxShadow: "0 4px 6px -1px rgba(99,102,241,0.2), 0 2px 4px -2px rgba(99,102,241,0.2)", fontSize: 16 }}>
-                    🤖
+                  <div style={{ width: 32, height: 32, borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", background: "#1a1a1a", fontSize: 14, fontWeight: 700, color: "#c8a44e" }}>
+                    R
                   </div>
                 </div>
               )}
@@ -143,21 +139,21 @@ export default function AdvisorPage() {
                   borderRadius: 16,
                   padding: "16px 20px",
                   ...(msg.role === "user"
-                    ? { color: "#fff", borderBottomRightRadius: 4, background: "linear-gradient(135deg, #6366f1, #8b5cf6)", boxShadow: "0 4px 6px -1px rgba(99,102,241,0.2), 0 2px 4px -2px rgba(99,102,241,0.2)" }
-                    : { background: "rgba(255,255,255,0.8)", backdropFilter: "blur(4px)", border: "1px solid rgba(255,255,255,0.6)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", color: "#334155", borderBottomLeftRadius: 4 }),
+                    ? { color: "#1a1a1a", borderBottomRightRadius: 4, background: "#c8a44e", boxShadow: "0 1px 2px rgba(0,0,0,0.04)" }
+                    : { background: "#fff", border: "1px solid #e8e4dc", boxShadow: "0 1px 2px rgba(0,0,0,0.04)", color: "#1a1a1a", borderBottomLeftRadius: 4 }),
                 }}
               >
                 {msg.role === "assistant" && (
-                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10, paddingBottom: 10, borderBottom: "1px solid rgba(226,232,240,0.6)" }}>
-                    <span style={{ fontSize: 12, fontWeight: 600, color: "#4f46e5" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10, paddingBottom: 10, borderBottom: "1px solid #e8e4dc" }}>
+                    <span style={{ fontSize: 12, fontWeight: 600, color: "#1a1a1a" }}>
                       RegPilot AI
                     </span>
                     {msg.source === "llm" ? (
-                      <span style={{ fontSize: 10, padding: "2px 6px", borderRadius: 6, fontWeight: 500, background: "#f0fdf4", color: "#166534", border: "1px solid #86efac" }}>
+                      <span style={{ fontSize: 10, padding: "2px 6px", borderRadius: 6, fontWeight: 500, background: "#2d7d46", color: "#fff" }}>
                         智谱AI
                       </span>
                     ) : (
-                      <span style={{ fontSize: 10, padding: "2px 6px", borderRadius: 6, fontWeight: 500, background: "#eef2ff", color: "#3730a3", border: "1px solid #a5b4fc" }}>
+                      <span style={{ fontSize: 10, padding: "2px 6px", borderRadius: 6, fontWeight: 500, background: "#e8e4dc", color: "#666" }}>
                         本地推理
                       </span>
                     )}
@@ -173,23 +169,23 @@ export default function AdvisorPage() {
           {loading && (
             <div style={{ display: "flex", gap: 12, justifyContent: "flex-start", animation: "slideUp 0.4s ease-out forwards" }}>
               <div style={{ flexShrink: 0, marginTop: 4 }}>
-                <div style={{ width: 32, height: 32, borderRadius: 12, display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg, #6366f1, #8b5cf6)", boxShadow: "0 4px 6px -1px rgba(99,102,241,0.2), 0 2px 4px -2px rgba(99,102,241,0.2)", fontSize: 16 }}>
-                  🤖
+                <div style={{ width: 32, height: 32, borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", background: "#1a1a1a", fontSize: 14, fontWeight: 700, color: "#c8a44e" }}>
+                  R
                 </div>
               </div>
-              <div style={{ background: "rgba(255,255,255,0.8)", backdropFilter: "blur(4px)", border: "1px solid rgba(255,255,255,0.6)", boxShadow: "0 1px 3px rgba(0,0,0,0.04)", borderRadius: 16, borderBottomLeftRadius: 4, padding: "16px 20px" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10, paddingBottom: 10, borderBottom: "1px solid rgba(226,232,240,0.6)" }}>
-                  <span style={{ fontSize: 12, fontWeight: 600, color: "#4f46e5" }}>
+              <div style={{ background: "#fff", border: "1px solid #e8e4dc", boxShadow: "0 1px 2px rgba(0,0,0,0.04)", borderRadius: 16, borderBottomLeftRadius: 4, padding: "16px 20px" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10, paddingBottom: 10, borderBottom: "1px solid #e8e4dc" }}>
+                  <span style={{ fontSize: 12, fontWeight: 600, color: "#1a1a1a" }}>
                     RegPilot AI
                   </span>
-                  <span style={{ fontSize: 10, padding: "2px 6px", borderRadius: 6, fontWeight: 500, background: "#fef3c7", color: "#92400e", border: "1px solid #fcd34d" }}>
+                  <span style={{ fontSize: 10, padding: "2px 6px", borderRadius: 6, fontWeight: 500, background: "#fef3c7", color: "#b8860b", border: "1px solid #fcd34d" }}>
                     思考中...
                   </span>
                 </div>
                 <div style={{ display: "flex", alignItems: "center", gap: 6, padding: "4px 0" }}>
-                  <span style={{ width: 8, height: 8, borderRadius: 9999, background: "linear-gradient(135deg, #6366f1, #8b5cf6)", animation: "bounce 1s infinite", animationDelay: "0ms" }} />
-                  <span style={{ width: 8, height: 8, borderRadius: 9999, background: "linear-gradient(135deg, #6366f1, #8b5cf6)", animation: "bounce 1s infinite", animationDelay: "150ms" }} />
-                  <span style={{ width: 8, height: 8, borderRadius: 9999, background: "linear-gradient(135deg, #6366f1, #8b5cf6)", animation: "bounce 1s infinite", animationDelay: "300ms" }} />
+                  <span style={{ width: 8, height: 8, borderRadius: 9999, background: "#b8860b", animation: "bounce 1s infinite", animationDelay: "0ms" }} />
+                  <span style={{ width: 8, height: 8, borderRadius: 9999, background: "#b8860b", animation: "bounce 1s infinite", animationDelay: "150ms" }} />
+                  <span style={{ width: 8, height: 8, borderRadius: 9999, background: "#b8860b", animation: "bounce 1s infinite", animationDelay: "300ms" }} />
                 </div>
               </div>
             </div>
@@ -200,8 +196,7 @@ export default function AdvisorPage() {
         {messages.length <= 1 && (
           <div style={{ padding: "0 32px 16px", flexShrink: 0, animation: "slideUp 0.4s ease-out forwards" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
-              <span style={{ fontSize: 16 }}>💬</span>
-              <p style={{ fontSize: 12, fontWeight: 500, color: "#94a3b8" }}>
+              <p style={{ fontSize: 12, fontWeight: 500, color: "#999" }}>
                 你可以这样问：
               </p>
             </div>
@@ -212,13 +207,11 @@ export default function AdvisorPage() {
                   onClick={() => sendMessage(q)}
                   style={{
                     padding: "8px 16px",
-                    background: "rgba(255,255,255,0.8)",
-                    backdropFilter: "blur(4px)",
-                    border: "1px solid rgba(255,255,255,0.6)",
-                    boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
+                    background: "#f0efe8",
+                    border: "1px solid #e8e4dc",
                     borderRadius: 9999,
                     fontSize: 14,
-                    color: "#475569",
+                    color: "#666",
                     cursor: "pointer",
                   }}
                 >
@@ -231,7 +224,7 @@ export default function AdvisorPage() {
 
         <form
           onSubmit={handleSubmit}
-          style={{ padding: "16px 32px", borderTop: "1px solid rgba(226,232,240,0.6)", flexShrink: 0 }}
+          style={{ padding: "16px 32px", borderTop: "1px solid #e8e4dc", flexShrink: 0 }}
         >
           <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             <input
@@ -243,32 +236,34 @@ export default function AdvisorPage() {
               style={{
                 flex: 1,
                 borderRadius: 12,
-                border: "1px solid #e2e8f0",
+                border: "1px solid #e8e4dc",
                 background: "#fff",
                 fontSize: 14,
-                color: "#334155",
+                color: "#1a1a1a",
                 padding: "12px 20px",
                 outline: "none",
                 opacity: loading ? 0.5 : 1,
               }}
+              onFocus={(e) => { e.currentTarget.style.borderColor = "#c8a44e"; }}
+              onBlur={(e) => { e.currentTarget.style.borderColor = "#e8e4dc"; }}
             />
             <button
               type="submit"
               disabled={loading || !input.trim()}
               style={{
-                color: "#fff",
+                color: "#1a1a1a",
                 borderRadius: 12,
                 padding: "12px 20px",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 gap: 8,
-                background: "linear-gradient(135deg, #6366f1, #4f46e5)",
-                boxShadow: "0 4px 12px rgba(79,70,229,0.3)",
+                background: "#c8a44e",
                 border: "none",
                 cursor: loading || !input.trim() ? "not-allowed" : "pointer",
                 opacity: loading || !input.trim() ? 0.5 : 1,
-                fontSize: 20,
+                fontSize: 14,
+                fontWeight: 600,
               }}
             >
               {loading ? (
@@ -277,7 +272,7 @@ export default function AdvisorPage() {
                   <path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" style={{ opacity: 0.75 }} />
                 </svg>
               ) : (
-                "📤"
+                "发送"
               )}
             </button>
           </div>
