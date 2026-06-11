@@ -4,6 +4,7 @@ import { useEffect, useState, type CSSProperties } from "react";
 import SidebarLayout from "@/components/layout/SidebarLayout";
 import { apiFetch } from "@/lib/api";
 import type { RegulationRuleBrief } from "@/lib/types";
+import { Icon } from "@/components/ui/Icon";
 
 const CATEGORIES = ["全部", "制动", "反光", "车铃", "链罩", "标签", "电池", "电机", "警示", "化学", "测试", "追踪标签", "电气安全"];
 const REGULATIONS = ["全部", "CPSC 1512", "CPSIA", "UL 2849", "UL 2271"];
@@ -61,8 +62,8 @@ export default function RegulationsPage() {
         <div style={{ animation: "slideUp 0.4s ease-out forwards" }}>
           <div style={{ height: 6, width: 80, borderRadius: 9999, marginBottom: 24, background: "#c8a44e" }} />
           <div style={{ display: "flex", alignItems: "flex-start", gap: 16, marginBottom: 32 }}>
-            <div style={{ width: 48, height: 48, borderRadius: 16, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, background: "#c8a44e", boxShadow: "0 1px 2px rgba(0,0,0,0.04)", fontSize: 18, fontWeight: 700, color: "#fff" }}>
-              RG
+            <div style={{ width: 48, height: 48, borderRadius: 16, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, background: "#c8a44e", boxShadow: "0 1px 2px rgba(0,0,0,0.04)", color: "#fff" }}>
+              <Icon name="book" size={18} />
             </div>
             <div>
               <h2 style={{ display: "flex", alignItems: "center", gap: 8, fontWeight: 700, color: "#1a1a1a", fontSize: 24, marginBottom: 4 }}>法规库</h2>
@@ -75,7 +76,7 @@ export default function RegulationsPage() {
 
         <div style={{ background: "#fff", border: "1px solid #e8e4dc", boxShadow: "0 1px 2px rgba(0,0,0,0.04)", borderRadius: 16, padding: 24, marginBottom: 24, animation: "slideUp 0.4s ease-out forwards", animationDelay: "0.05s" }}>
           <div style={{ position: "relative", marginBottom: 20 }}>
-            <span style={{ position: "absolute", left: 16, top: "50%", transform: "translateY(-50%)", fontSize: 13, pointerEvents: "none", color: "#999", fontWeight: 600 }}>SR</span>
+            <span style={{ position: "absolute", left: 16, top: "50%", transform: "translateY(-50%)", display: "flex", alignItems: "center", justifyContent: "center", pointerEvents: "none", color: "#999" }}><Icon name="search" size={13} /></span>
             <input
               type="text"
               placeholder="搜索法规条款或关键词..."
@@ -88,7 +89,7 @@ export default function RegulationsPage() {
           <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
             <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 8 }}>
               <span style={{ fontSize: 11, fontWeight: 600, color: "#999", textTransform: "uppercase", letterSpacing: "0.05em", marginRight: 4, display: "flex", alignItems: "center", gap: 6 }}>
-                <span style={{ fontSize: 10, fontWeight: 700, color: "#999" }}>REG</span>
+                <Icon name="rules" size={10} />
                 法规
               </span>
               {REGULATIONS.map((reg) => (
@@ -114,7 +115,7 @@ export default function RegulationsPage() {
 
             <div style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: 8 }}>
               <span style={{ fontSize: 11, fontWeight: 600, color: "#999", textTransform: "uppercase", letterSpacing: "0.05em", marginRight: 4, display: "flex", alignItems: "center", gap: 6 }}>
-                <span style={{ fontSize: 10, fontWeight: 700, color: "#999" }}>CAT</span>
+                <Icon name="tag" size={10} />
                 分类
               </span>
               {CATEGORIES.map((cat) => (
@@ -142,7 +143,7 @@ export default function RegulationsPage() {
 
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 16, animation: "slideUp 0.4s ease-out forwards", animationDelay: "0.1s" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 14, color: "#666" }}>
-            <span style={{ fontSize: 10, fontWeight: 700, color: "#999" }}>LIST</span>
+            <Icon name="file" size={10} />
             {loading ? "加载中..." : (
               <>
                 共 <span style={{ fontWeight: 600, color: "#1a1a1a" }}>{filteredRules.length}</span> 条法规条款
@@ -154,7 +155,7 @@ export default function RegulationsPage() {
               onClick={() => { setActiveCategory("全部"); setActiveRegulation("全部"); }}
               style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#999", background: "none", border: "none", cursor: "pointer" }}
             >
-              <span style={{ fontSize: 11, fontWeight: 700 }}>X</span>
+              <Icon name="close" size={11} />
               清除筛选
             </button>
           )}
@@ -182,8 +183,8 @@ export default function RegulationsPage() {
           </div>
         ) : filteredRules.length === 0 ? (
           <div style={{ background: "#fff", border: "1px solid #e8e4dc", boxShadow: "0 1px 2px rgba(0,0,0,0.04)", borderRadius: 16, padding: 64, textAlign: "center", animation: "slideUp 0.4s ease-out forwards", animationDelay: "0.15s" }}>
-            <div style={{ width: 64, height: 64, borderRadius: 16, background: "#f5f4f0", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px", fontSize: 18, fontWeight: 700, color: "#999" }}>
-              NF
+            <div style={{ width: 64, height: 64, borderRadius: 16, background: "#f5f4f0", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px", color: "#999" }}>
+              <Icon name="search" size={18} />
             </div>
             <p style={{ color: "#666", fontSize: 14, fontWeight: 500 }}>未找到匹配的法规条款</p>
             <p style={{ color: "#999", fontSize: 12, marginTop: 4 }}>尝试调整筛选条件或搜索关键词</p>

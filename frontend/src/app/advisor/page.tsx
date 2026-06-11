@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import SidebarLayout from "@/components/layout/SidebarLayout";
+import { Icon } from "@/components/ui/Icon";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
@@ -103,12 +104,14 @@ export default function AdvisorPage() {
       <div style={{ display: "flex", flexDirection: "column", height: "100%", background: "#fafaf8" }}>
         <div style={{ padding: "24px 32px", flexShrink: 0 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
-            <div style={{ width: 4, height: 32, borderRadius: 9999, background: "#c8a44e" }} />
+            <div style={{ color: "#c8a44e" }}>
+              <Icon name="chat" size={28} />
+            </div>
             <h2 style={{ fontSize: 24, fontWeight: 700, color: "#1a1a1a", letterSpacing: "-0.025em" }}>
               AI 法规顾问
             </h2>
           </div>
-          <p style={{ color: "#666", fontSize: 14, marginLeft: 16, paddingLeft: 4 }}>
+          <p style={{ color: "#666", fontSize: 14, paddingLeft: 4 }}>
             智谱AI驱动 · 67条法规规则 · 智能推理
           </p>
         </div>
@@ -128,8 +131,8 @@ export default function AdvisorPage() {
             >
               {msg.role === "assistant" && (
                 <div style={{ flexShrink: 0, marginTop: 4 }}>
-                  <div style={{ width: 32, height: 32, borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", background: "#1a1a1a", fontSize: 14, fontWeight: 700, color: "#c8a44e" }}>
-                    R
+                  <div style={{ width: 32, height: 32, borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", background: "#1a1a1a", color: "#c8a44e" }}>
+                    <Icon name="chat" size={14} />
                   </div>
                 </div>
               )}
@@ -169,8 +172,8 @@ export default function AdvisorPage() {
           {loading && (
             <div style={{ display: "flex", gap: 12, justifyContent: "flex-start", animation: "slideUp 0.4s ease-out forwards" }}>
               <div style={{ flexShrink: 0, marginTop: 4 }}>
-                <div style={{ width: 32, height: 32, borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", background: "#1a1a1a", fontSize: 14, fontWeight: 700, color: "#c8a44e" }}>
-                  R
+                <div style={{ width: 32, height: 32, borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", background: "#1a1a1a", color: "#c8a44e" }}>
+                  <Icon name="chat" size={14} />
                 </div>
               </div>
               <div style={{ background: "#fff", border: "1px solid #e8e4dc", boxShadow: "0 1px 2px rgba(0,0,0,0.04)", borderRadius: 16, borderBottomLeftRadius: 4, padding: "16px 20px" }}>
@@ -196,6 +199,9 @@ export default function AdvisorPage() {
         {messages.length <= 1 && (
           <div style={{ padding: "0 32px 16px", flexShrink: 0, animation: "slideUp 0.4s ease-out forwards" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+              <div style={{ color: "#999" }}>
+                <Icon name="search" size={12} />
+              </div>
               <p style={{ fontSize: 12, fontWeight: 500, color: "#999" }}>
                 你可以这样问：
               </p>

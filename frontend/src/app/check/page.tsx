@@ -3,6 +3,7 @@
 import { useState, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 import SidebarLayout from "@/components/layout/SidebarLayout";
+import { Icon } from "@/components/ui/Icon";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
@@ -46,6 +47,13 @@ const FILE_ABBR: Record<string, string> = {
   spec: "SP",
   description: "DC",
   images: "IM",
+};
+
+const FILE_ICON: Record<string, string> = {
+  bom: "file",
+  spec: "file",
+  description: "edit",
+  images: "tag",
 };
 
 export default function CheckPage() {
@@ -134,7 +142,7 @@ export default function CheckPage() {
       <div style={{ padding: "32px 32px 64px", background: "#fafaf8", minHeight: "100vh" }}>
         <div style={{ marginBottom: 32, animation: "slideUp 0.4s ease-out forwards" }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 8 }}>
-            <div style={{ width: 8, height: 32, borderRadius: 2, background: "#c8a44e" }} />
+            <Icon name="shield" size={28} />
             <h2 style={{ fontSize: 24, fontWeight: 700, color: "#1a1a1a", letterSpacing: "-0.025em" }}>产品检查</h2>
           </div>
           <p style={{ color: "#999", marginLeft: 20 }}>上传产品资料，AI 自动进行法规合规分析</p>
@@ -193,8 +201,8 @@ export default function CheckPage() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24, marginBottom: 32 }}>
           <div style={{ animation: "slideUp 0.4s ease-out forwards", animationDelay: "0.1s" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
-              <div style={{ width: 4, height: 20, borderRadius: 2, background: "#c8a44e" }} />
-              <span style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 18, fontWeight: 700, color: "#1a1a1a" }}>目标市场</span>
+              <Icon name="globe" size={20} />
+              <span style={{ fontSize: 18, fontWeight: 700, color: "#1a1a1a" }}>目标市场</span>
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
               {COUNTRIES.map((c) => (
@@ -249,8 +257,8 @@ export default function CheckPage() {
 
           <div style={{ animation: "slideUp 0.4s ease-out forwards", animationDelay: "0.15s" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
-              <div style={{ width: 4, height: 20, borderRadius: 2, background: "#c8a44e" }} />
-              <span style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 18, fontWeight: 700, color: "#1a1a1a" }}>
+              <Icon name="products" size={20} />
+              <span style={{ fontSize: 18, fontWeight: 700, color: "#1a1a1a" }}>
                 产品类型
                 {!productType && <span style={{ color: "#c0392b", marginLeft: 2 }}>*</span>}
               </span>
@@ -302,8 +310,8 @@ export default function CheckPage() {
 
           <div style={{ animation: "slideUp 0.4s ease-out forwards", animationDelay: "0.2s" }}>
             <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
-              <div style={{ width: 4, height: 20, borderRadius: 2, background: "#c8a44e" }} />
-              <span style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 18, fontWeight: 700, color: "#1a1a1a" }}>
+              <Icon name="upload" size={20} />
+              <span style={{ fontSize: 18, fontWeight: 700, color: "#1a1a1a" }}>
                 产品资料
                 {!hasBom && <span style={{ color: "#c0392b", marginLeft: 2 }}>*</span>}
               </span>
@@ -335,8 +343,8 @@ export default function CheckPage() {
                     {filled ? (
                       <div>
                         <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8 }}>
-                          <div style={{ width: 32, height: 32, borderRadius: 6, background: "#e6f2ea", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 700, color: "#2d7d46" }}>
-                            {FILE_ABBR[slot.key]}
+                          <div style={{ width: 32, height: 32, borderRadius: 6, background: "#e6f2ea", display: "flex", alignItems: "center", justifyContent: "center", color: "#2d7d46" }}>
+                            <Icon name={FILE_ICON[slot.key]} size={16} />
                           </div>
                           <span style={{ fontSize: 14, fontWeight: 600, color: "#2d7d46" }}>{slot.label}</span>
                           <span style={{ fontSize: 14, color: "#2d7d46", marginLeft: "auto", fontWeight: 700 }}>✓</span>
@@ -344,11 +352,7 @@ export default function CheckPage() {
                         {slotFiles.map((f, i) => (
                           <div key={i} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginLeft: 42, marginTop: 6 }}>
                             <div style={{ display: "flex", alignItems: "center", gap: 6, minWidth: 0 }}>
-                              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ flexShrink: 0 }}>
-                                <rect x="1" y="1" width="10" height="12" rx="1" stroke="#999" strokeWidth="1" fill="none" />
-                                <line x1="3.5" y1="4" x2="8.5" y2="4" stroke="#999" strokeWidth="0.75" />
-                                <line x1="3.5" y1="6" x2="7" y2="6" stroke="#999" strokeWidth="0.75" />
-                              </svg>
+                              <Icon name="file" size={12} />
                               <span style={{ fontSize: 12, color: "#666", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{f.name}</span>
                             </div>
                             <button
@@ -372,10 +376,10 @@ export default function CheckPage() {
                         style={{ width: "100%", textAlign: "left", display: "flex", alignItems: "center", gap: 12, background: "none", border: "none", cursor: "pointer", padding: 0 }}
                       >
                         <div style={{
-                          width: 32, height: 32, borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, fontWeight: 700,
+                          width: 32, height: 32, borderRadius: 6, display: "flex", alignItems: "center", justifyContent: "center",
                           ...(slot.required ? { background: "#fdf6e3", color: "#b8860b" } : { background: "#f5f0e6", color: "#999" }),
                         }}>
-                          {FILE_ABBR[slot.key]}
+                          <Icon name={FILE_ICON[slot.key]} size={16} />
                         </div>
                         <div style={{ flex: 1, minWidth: 0 }}>
                           <div style={{ fontSize: 14, fontWeight: 500, color: "#1a1a1a" }}>
@@ -384,10 +388,9 @@ export default function CheckPage() {
                           </div>
                           <div style={{ fontSize: 11, color: "#999", marginTop: 2 }}>{slot.desc}</div>
                         </div>
-                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style={{ flexShrink: 0 }}>
-                          <path d="M8 2v8M4 6l4-4 4 4" stroke="#999" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                          <path d="M2 11v2a1 1 0 001 1h10a1 1 0 001-1v-2" stroke="#999" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
+                        <div style={{ flexShrink: 0, color: "#999" }}>
+                          <Icon name="upload" size={16} />
+                        </div>
                       </button>
                     )}
                   </div>
@@ -396,11 +399,7 @@ export default function CheckPage() {
             </div>
             {totalFiles > 0 && (
               <div style={{ marginTop: 12, display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#999" }}>
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                  <rect x="1" y="2" width="12" height="10" rx="1.5" stroke="#999" strokeWidth="1" fill="none" />
-                  <line x1="4" y1="5" x2="10" y2="5" stroke="#999" strokeWidth="0.75" />
-                  <line x1="4" y1="7.5" x2="8" y2="7.5" stroke="#999" strokeWidth="0.75" />
-                </svg>
+                <Icon name="info" size={14} />
                 已选择 {totalFiles} 个文件
               </div>
             )}
@@ -441,29 +440,21 @@ export default function CheckPage() {
           >
             {uploading ? (
               <>
-                <svg width="20" height="20" viewBox="0 0 24 24" style={{ animation: "spin 1s linear infinite" }}>
-                  <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" style={{ opacity: 0.25 }} />
-                  <path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" style={{ opacity: 0.75 }} />
-                </svg>
+                <div style={{ animation: "spin 1s linear infinite" }}>
+                  <Icon name="clock" size={20} />
+                </div>
                 分析中...
               </>
             ) : (
               <>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <circle cx="10" cy="10" r="8" stroke="#1a1a1a" strokeWidth="1.5" fill="none" />
-                  <path d="M10 6v4l3 2" stroke="#1a1a1a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
+                <Icon name="check" size={20} />
                 开始合规分析
               </>
             )}
           </button>
           {!canSubmit && !uploading && (
             <span style={{ fontSize: 14, color: "#999", display: "flex", alignItems: "center", gap: 6 }}>
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                <circle cx="7" cy="7" r="6" stroke="#999" strokeWidth="1.2" fill="none" />
-                <line x1="7" y1="4" x2="7" y2="7.5" stroke="#999" strokeWidth="1.2" strokeLinecap="round" />
-                <circle cx="7" cy="9.5" r="0.6" fill="#999" />
-              </svg>
+              <Icon name="info" size={14} />
               {!hasBom ? "请上传 BOM 物料清单" : !productType ? "请选择产品类型" : ""}
             </span>
           )}

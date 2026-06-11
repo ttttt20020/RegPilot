@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import SidebarLayout from "@/components/layout/SidebarLayout";
 import { apiFetch } from "@/lib/api";
 import type { AnalysisListItem } from "@/lib/types";
+import { Icon } from "@/components/ui/Icon";
 
 export default function Home() {
   const router = useRouter();
@@ -102,25 +103,25 @@ export default function Home() {
               label: "法规规则",
               value: "67",
               unit: "条",
-              abbr: "RG",
+              icon: "rules" as const,
             },
             {
               label: "覆盖法规",
               value: "6",
               unit: "部",
-              abbr: "LR",
+              icon: "book" as const,
             },
             {
               label: "产品类型",
               value: "3",
               unit: "种",
-              abbr: "PT",
+              icon: "products" as const,
             },
             {
               label: "分析记录",
               value: String(analyses.length),
               unit: "条",
-              abbr: "AR",
+              icon: "file" as const,
             },
           ].map((stat) => (
             <div
@@ -151,13 +152,10 @@ export default function Home() {
                     height: 28,
                     borderRadius: 4,
                     background: "#f5f3ee",
-                    fontSize: 10,
-                    fontWeight: 700,
                     color: "#c8a44e",
-                    letterSpacing: 0.5,
                   }}
                 >
-                  {stat.abbr}
+                  <Icon name={stat.icon} size={14} />
                 </span>
                 <span
                   style={{
@@ -224,12 +222,10 @@ export default function Home() {
                     height: 24,
                     borderRadius: 4,
                     background: "#f5f3ee",
-                    fontSize: 10,
-                    fontWeight: 700,
                     color: "#c8a44e",
                   }}
                 >
-                  RA
+                  <Icon name="history" size={12} />
                 </span>
                 最近分析
               </div>
@@ -473,12 +469,10 @@ export default function Home() {
                 height: 24,
                 borderRadius: 4,
                 background: "#f5f3ee",
-                fontSize: 10,
-                fontWeight: 700,
                 color: "#c8a44e",
               }}
             >
-              RU
+              <Icon name="bell" size={12} />
             </span>
             法规更新动态
           </div>

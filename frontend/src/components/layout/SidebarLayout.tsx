@@ -3,12 +3,13 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
+import { Icon } from "@/components/ui/Icon";
 
 const navItems = [
-  { href: "/", label: "首页", icon: "R" },
-  { href: "/check", label: "产品检查", icon: "C" },
-  { href: "/regulations", label: "法规库", icon: "L" },
-  { href: "/advisor", label: "AI 顾问", icon: "A" },
+  { href: "/", label: "首页", icon: "home" },
+  { href: "/check", label: "产品检查", icon: "check" },
+  { href: "/regulations", label: "法规库", icon: "book" },
+  { href: "/advisor", label: "AI 顾问", icon: "chat" },
 ];
 
 export default function SidebarLayout({ children }: { children: React.ReactNode }) {
@@ -64,12 +65,9 @@ export default function SidebarLayout({ children }: { children: React.ReactNode 
                   justifyContent: "center",
                   background: "#c8a44e",
                   color: "#1a1a1a",
-                  fontSize: 14,
-                  fontWeight: 800,
-                  letterSpacing: "-0.5px",
                 }}
               >
-                R
+                <Icon name="shield" size={16} />
               </div>
               <div>
                 <div style={{ fontSize: 14, fontWeight: 700, color: "#e8e4dc", letterSpacing: "-0.3px" }}>RegPilot</div>
@@ -103,19 +101,13 @@ export default function SidebarLayout({ children }: { children: React.ReactNode 
                   >
                     <span
                       style={{
-                        width: 22,
-                        height: 22,
-                        borderRadius: 5,
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
-                        fontSize: 11,
-                        fontWeight: 700,
-                        color: isActive ? "#1a1a1a" : "#666",
-                        background: isActive ? "#c8a44e" : "#2a2a2a",
+                        color: isActive ? "#c8a44e" : "#666",
                       }}
                     >
-                      {item.icon}
+                      <Icon name={item.icon} size={16} />
                     </span>
                     <span>{item.label}</span>
                   </Link>
@@ -179,19 +171,13 @@ export default function SidebarLayout({ children }: { children: React.ReactNode 
                 >
                   <span
                     style={{
-                      width: 24,
-                      height: 24,
-                      borderRadius: 5,
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
-                      fontSize: 11,
-                      fontWeight: 700,
-                      color: isActive ? "#1a1a1a" : "#666",
-                      background: isActive ? "#c8a44e" : "#2a2a2a",
+                      color: isActive ? "#c8a44e" : "#666",
                     }}
                   >
-                    {item.icon}
+                    <Icon name={item.icon} size={18} />
                   </span>
                   <span>{item.label}</span>
                 </Link>
